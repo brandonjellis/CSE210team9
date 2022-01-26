@@ -21,7 +21,15 @@ class game:
 
     #scoring
 
-    #get inputs
+    def get_inputs(self):
+        x = self.old_card
+        print(f"The car is: {x}")
+        y = input("Higher or lower? [h/l] ")
+        if x == y :
+            return True
+
+        else:
+            return False
 
     #outputs
 
