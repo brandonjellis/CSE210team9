@@ -57,7 +57,7 @@ class game:
 
     def get_inputs(self):
         print(f"The card is: {self.new_card.value}")
-        user_guess = input("Higher or lower? [h/l] ").lower
+        user_guess = input("Higher or lower? [h/l] ").lower()
         if user_guess == 'h':
             return True
         else:
