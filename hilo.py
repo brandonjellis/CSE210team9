@@ -41,13 +41,21 @@ class game:
     def count_score(self):
         pass
 
-    #get inputs
     def get_inputs(self):
-        pass
+        first_card = self.old_card
+        print(f"The car is: {first_card}")
+        user_guess = input("Higher or lower? [h/l] ")
+        if first_card == user_guess :
+            return True
+        else:
+            return False
 
-    #outputs
     def get_outputs(self):
-        pass
+        print(f"Next card was: {self.new_card.value}")
+        
+        print(f"Your score is: {self.score}")
+        
+
 
     
 
