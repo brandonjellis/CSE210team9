@@ -8,7 +8,7 @@ from random import randint as r
 
 class game:
     def __init__(self):
-        self.score = 0
+        self.score = 300
         self.round = 1
         self.gameloop = True
         self.old_card = card()
