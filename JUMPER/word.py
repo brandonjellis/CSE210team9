@@ -15,3 +15,4 @@ class word:
     def get_word(self):
         #getter for the chosen word
         pass
+    
