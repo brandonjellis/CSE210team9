@@ -1,6 +1,3 @@
-from HILO.hilo import game
-from JUMPER.word import word
-
 
 class game_display:
     def __init__(self):
