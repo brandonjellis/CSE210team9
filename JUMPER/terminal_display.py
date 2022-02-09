@@ -27,10 +27,12 @@ class game_display:
 
     def print_defeat(self):
         #Print a defeat message if the user losses
+        print("You Lose!")
         pass
 
     def print_win(self):
         #Print a winner message if the user wins
+        print("You Win!")
         pass
 
 class game_input:
