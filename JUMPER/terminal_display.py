@@ -59,7 +59,6 @@ class game_input:
                 valid = True
             
             else:
-                valid = False
                 print("That's a repeated character. Please, type in a different character. ")
 
                 
