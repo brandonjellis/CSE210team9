@@ -16,9 +16,10 @@ class game:
         #loops through game logic defined below
         pass
 
-    def verify_guess(self):
-        #checks if the guess is correct or incorrect and appends score accoridingly 
-        pass
+    def game_in(self):
+        self.guesses.append(self.inputs.get_input())
+        if self.guesses[-1] in self.word.get_word():
+            pass
 
     def check_gamestate(self):
         #checks all the values in the game to see if the player has won or lost. 
