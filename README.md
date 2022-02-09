@@ -52,7 +52,7 @@ classes:
 -can provide the chosen word to other programs
 
 "input"
--gets guess from terminal imput
+-gets guess from terminal input
 -filters invalid inputs or letters already chosen
 
 "display"

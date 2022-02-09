@@ -1,3 +1,4 @@
+from timeit import repeat
 from HILO.hilo import game
 from JUMPER.word import word
 
@@ -21,8 +22,11 @@ class game_display:
         pass
 
     def draw_constant(self):
-        #Draw part of the board that is constant during the whole game.
-        pass
+        print("  /|\  ")
+        print("  / \  ")
+        print()
+        print("^^^^^^^")
+        
 
     def print_defeat(self):
         #Print a defeat message if the user losses
@@ -34,21 +38,48 @@ class game_display:
 
 class game_input:
     def __init__(self):
-        self.input = ""
+        self._input = ""
     
         pass
     
-    def input(self):
+    def input(self, guesses):
         #Get an input from the user. Looping until the input is valid and store the value into self.input. Call the verifying methods.
-        pass
+       
+        valid = False
+        while not valid:
+            user_input = input("Guess a letter [a-z]: ")
+            if self.verify_valid(user_input):
+                self._input = user_input
+                valid = True
 
-    def verify_valid(self):
+            else:
+                print("Invalid input. Try again.")
+
+            if self.verify_repeat(user_input, guesses):
+                valid = True
+            
+            else:
+                valid = False
+                print("That's a repeated character. Please, type in a different character. ")
+
+                
+
+
+    def verify_valid(self, user_input):
         #Print a message for the user that he used an invalid input
-        pass
+        if user_input.isalpha():
+            if len(user_input) == 1:
+                return True
+        return False
 
-    def verify_repeat(self, guesses):
+
+    def verify_repeat(self, user_input, guesses):
         #Print a message for the user that he already used that letter
-        pass
+        if user_input in guesses:
+            return False
+        return True
+
+        
 
     
     pass
