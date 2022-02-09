@@ -1,7 +1,3 @@
-from timeit import repeat
-from HILO.hilo import game
-from JUMPER.word import word
-
 
 class game_display:
     def __init__(self):
@@ -13,11 +9,15 @@ class game_display:
         pass
 
     def draw_word(self, word, guesses):
-        "Get the word from self and draw the undercores necessary for the specific each letter. If the user guesses one letter, it's going to draw the letter instead of an underscore and draw underscore for the rest of the letters the user has guessed."
+        #Get the word from self and draw the undercores necessary for the specific each letter.
+        #If the user guesses one letter, it's going to draw the letter instead of an underscore
+        #and draw underscore for the rest of the letters the user has guessed."
         pass
 
     def draw_parachute(self, chances):
-        "Get the amount of guesses left. It runs a loop to draw the parachute. Depending of how many guesses the user have left, it is the amount of time that is going to loop. Every time the user guesses incorrectly, the program will skip first component in the array."
+        #Get the amount of guesses left. It runs a loop to draw the parachute. 
+        #Depending of how many guesses the user have left, it is the amount of time that is going to loop. 
+        #Every time the user guesses incorrectly, the program will skip first component in the array."
 
         pass
 
@@ -81,5 +81,6 @@ class game_input:
 
         
 
-    
-    pass
+    def get_input(self):
+        #returns self.input
+        pass
