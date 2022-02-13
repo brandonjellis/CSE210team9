@@ -6,9 +6,17 @@ class game_display:
         self.character_list = []
         pass
 
-    def draw_display(self):
+    def draw_display(self, chances, guesses, word):
         #Call all the other draw methods to display the whole picture of the board.
-        pass
+
+        self.draw_word(word, guesses)
+        print()
+        self.draw_parachute(chances)
+        self.draw_constant()
+        print()
+        game_input.get_input(guesses)
+        
+        
 
     def draw_word(self, word, guesses):
         #Get the word from self and draw the undercores necessary for the specific each letter.
@@ -103,11 +111,3 @@ class game_input:
 
     def get_input(self):
         return self._input
-
-def main():
-    x = game_display()
-    x.draw_parachute(0) 
-
-    pass
-
-main()
