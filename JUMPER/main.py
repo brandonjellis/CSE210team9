@@ -9,3 +9,5 @@ from game import game
 def main():
     g = game()
     g.start_game()
+
+main()

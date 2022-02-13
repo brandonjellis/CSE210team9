@@ -4,6 +4,7 @@
 class game_display:
     def __init__(self):
         self.character_list = []
+        self._input = ""
         pass
 
     def draw_display(self, chances, guesses, word):
@@ -14,7 +15,6 @@ class game_display:
         self.draw_parachute(chances)
         self.draw_constant()
         print()
-        game_input.get_input(guesses)
         
         
 
@@ -28,6 +28,7 @@ class game_display:
                 print(c, end = " ")
             else:
                 print("_", end = " ")
+        print()
 
 
 
@@ -59,9 +60,10 @@ class game_display:
         print("^^^^^^^")
         
 
-    def print_defeat(self):
+    def print_defeat(self,word):
         #Print a defeat message if the user losses
         print("You Lose!")
+        print(f"The word was : {word}")
         pass
 
     def print_win(self):
@@ -98,7 +100,7 @@ class game_input:
 
     def verify_valid(self, user_input):
         #Print a message for the user that he used an invalid input
-        if user_input.isalpha():
+        if (user_input.isalpha()):
             if len(user_input) == 1:
                 return True
         return False

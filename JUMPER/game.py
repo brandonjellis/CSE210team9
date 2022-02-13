@@ -6,7 +6,7 @@ class game:
     
     def __init__(self):
         self.guesses = []
-        self.chances = 5
+        self.chances = 4
         self.display =  game_display()
         self.inputs = game_input()
         self.word = w()
@@ -14,8 +14,9 @@ class game:
 
     def start_game(self):
         #loops through game logic defined below
-        
+
         self.word.choose_word()
+        print(self.word.get_word())
         self.game_out()
         while(self.is_playing):
             self.game_in()
@@ -34,7 +35,7 @@ class game:
             self.chances -= 1
         if self.chances <= 0:
             self.is_playing = False
-            self.display.print_defeat()
+            self.display.print_defeat(self.word.get_word())
         all_guessed = True
         for c in self.word.get_word():
             if c not in self.guesses:
