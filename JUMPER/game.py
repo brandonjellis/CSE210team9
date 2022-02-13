@@ -16,6 +16,7 @@ class game:
         #loops through game logic defined below
         
         self.word.choose_word()
+        self.game_out()
         while(self.is_playing):
             self.game_in()
             self.check_gamestate()
@@ -43,7 +44,7 @@ class game:
             self.display.print_win()
 
     def game_out(self):
-        self.display.draw_display(self.chances, self.guesses)
+        self.display.draw_display(self.chances, self.guesses, self.word.get_word())
 
     
     

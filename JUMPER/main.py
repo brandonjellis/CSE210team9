@@ -4,8 +4,8 @@ CSE210 TEAM 9 JUMPER GAME
 Brandon Ellis, Luis Cardenas, David Watkins
 '''
 
-class game_master:
-    pass
+from game import game
 
 def main():
-    pass
+    g = game()
+    g.start_game()
