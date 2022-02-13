@@ -19,10 +19,10 @@ class game:
         self._word.choose_word()
 
         if(self.debug):
-            print(self.word.get_word()) #debug print
-            
+            print(self._word.get_word()) #debug print
+
         self.__game_out()
-        while(self.is_playing):
+        while(self._is_playing):
             self.__game_in()
             self.__check_gamestate()
             self.__game_out()
@@ -38,14 +38,14 @@ class game:
         if not(self._word.check_char(self._guesses[-1])):
             self._chances -= 1
         if self._chances <= 0:
-            self.is_playing = False
+            self._is_playing = False
             self._display.print_defeat(self._word.get_word())
         all_guessed = True
         for c in self._word.get_word():
-            if c not in self.guesses:
+            if c not in self._guesses:
                 all_guessed = False
         if all_guessed:
-            self.is_playing = False
+            self._is_playing = False
             self._display.print_win()
 
     def __game_out(self):
