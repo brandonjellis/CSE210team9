@@ -16,7 +16,7 @@ class game:
         #loops through game logic defined below
 
         self.word.choose_word()
-        print(self.word.get_word())
+        #print(self.word.get_word()) #debug print
         self.game_out()
         while(self.is_playing):
             self.game_in()
