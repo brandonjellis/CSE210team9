@@ -1,4 +1,6 @@
 
+
+
 class game_display:
     def __init__(self):
         self.character_list = []
@@ -12,14 +14,35 @@ class game_display:
         #Get the word from self and draw the undercores necessary for the specific each letter.
         #If the user guesses one letter, it's going to draw the letter instead of an underscore
         #and draw underscore for the rest of the letters the user has guessed."
-        pass
+        
+        for c in word:
+            if c in guesses:
+                print(c, end = " ")
+            else:
+                print("_", end = " ")
+
+
 
     def draw_parachute(self, chances):
         #Get the amount of guesses left. It runs a loop to draw the parachute. 
         #Depending of how many guesses the user have left, it is the amount of time that is going to loop. 
         #Every time the user guesses incorrectly, the program will skip first component in the array."
+        parachute = ["  ___  "," /___\ "," \   / ","  \ /  "]
 
-        pass
+        
+            
+        x = 4 - chances
+        for i in range(chances):
+            i += x
+            print(parachute[i])
+        
+
+        if chances == 0:
+            print("   x   ")
+
+        else:
+            print("   0   ")
+
 
     def draw_constant(self):
         print("  /|\  ")
@@ -56,15 +79,14 @@ class game_input:
 
             else:
                 print("Invalid input. Try again.")
+                valid = False
 
             if self.verify_repeat(user_input, guesses):
                 valid = True
             
             else:
                 print("That's a repeated character. Please, type in a different character. ")
-
-                
-
+                valid = False
 
     def verify_valid(self, user_input):
         #Print a message for the user that he used an invalid input
@@ -73,15 +95,19 @@ class game_input:
                 return True
         return False
 
-
     def verify_repeat(self, user_input, guesses):
         #Print a message for the user that he already used that letter
         if user_input in guesses:
             return False
         return True
 
-        
-
     def get_input(self):
-        #returns self.input
-        pass
+        return self._input
+
+def main():
+    x = game_display()
+    x.draw_parachute(0) 
+
+    pass
+
+main()
