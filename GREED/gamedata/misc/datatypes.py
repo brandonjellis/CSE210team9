@@ -35,7 +35,7 @@ class Point:
     def point_3d(self):
         return (self._xp, self._yp, self._zp)
 
-    def set_point(self, x, y, z):
+    def set_point(self, x = 0, y = 0, z = 0):
         self._xp = x
         self._yp = y
         self._zp = z
