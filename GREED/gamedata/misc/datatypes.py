@@ -23,7 +23,7 @@ class Vector:
     def set_z(self,z):
         self._zdir = z
 
-class point:
+class Point:
     def __init__(self, x=0, y=0, z=0):
         self._xp = x
         self._yp = y
