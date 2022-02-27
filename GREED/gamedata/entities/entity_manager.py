@@ -1,7 +1,6 @@
 #organizes all the entities on screen and provides methods for managing them. 
 
-from entities.falling_objects import Object
-from entities.player import Player
+
 
 class Entity_Manager:
     def __init__(self):
@@ -21,7 +20,10 @@ class Entity_Manager:
             return []
     
     def get_all(self):
-        pass
+        results = []
+        for group in self._entities:
+            results.extend(self._entities[group])
+        return results
 
     def get_first_entity(self, type):
         if type in self._entities.keys():

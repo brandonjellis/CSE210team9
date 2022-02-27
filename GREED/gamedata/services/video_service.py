@@ -15,15 +15,15 @@ class Video_Service:
     def clear_buffer(self):
         pyray.begin_drawing()
         pyray.clear_background(pyray.BLACK)
-        if self._debug == True:
-            self._draw_grid()
     
     def draw_actor(self, entity):
         text = entity.get_icon()
         point = entity.get_position().point_2d()
+        px = point[0]
+        py = point[1]
         font_size = entity.get_size()
         color = entity.get_color().get_color()
-        pyray.draw_text(text, point[0], point[1], font_size, color)
+        pyray.draw_text(text, px, py, font_size, color)
         
     def draw_actors(self, entities):
         for entity in entities:

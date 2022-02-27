@@ -4,12 +4,14 @@
 from gamedata.misc.datatypes import Color, Point
 
 class Entity:
-    def __init__(self):
+    def __init__(self, limits = False):
         self._icon = ""
         self._size = 15
         self._color = Color()
         self._position = Point()
         self._velocity = Point()
+
+        self._limited = limits
         self._max_x = 0
         self._min_x = 0
         self._max_y = 0
@@ -25,7 +27,7 @@ class Entity:
     def get_color(self):
         return self._color
 
-    def get_positon(self):
+    def get_position(self):
         return self._position
 
     def get_velocity(self):
@@ -56,18 +58,25 @@ class Entity:
 
     def update_pos(self):
         new_pos = self._position.point_2d()
-        new_pos[0] += self._velocity.point_2d()[0]
-        new_pos[1] += self._velocity.point_2d()[1]
+        x = new_pos[0]
+        y = new_pos[1]
+        v = self._velocity.point_2d()
+
+        x += v[0]
+        y += v[1]
         
-        if (new_pos[0] > self._max_x):
-            new_pos[0] = self._max_x
-        elif (new_pos[0] < self._min_x):
-            new_pos[0] = self._min_x
-        
-        if (new_pos[1] > self._max_y):
-            new_pos[1] = self._max_y
-        elif (new_pos[1] < self._min_y):
-            new_pos[1] = self._min_y
+        if self._limited:
+            if (x > self._max_x):
+                x = self._max_x
+            elif (x < self._min_x):
+                x = self._min_x
+
+            if (y > self._max_y):
+                y = self._max_y
+            elif (y < self._min_y):
+                y = self._min_y
+
+        self._position.set_point(x,y)
         
         
 

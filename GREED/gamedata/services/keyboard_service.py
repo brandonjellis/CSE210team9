@@ -7,8 +7,6 @@ class Keyboard_Service:
     def __init__(self, cell_size = 1):
         self._cell_size = cell_size
     
-    def velocity(self, x, y, factor):
-     return Point()
     
 
     def get_position(self):
