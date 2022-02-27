@@ -10,6 +10,11 @@ class Entity:
         self._color = Color()
         self._position = Point()
         self._velocity = Point()
+        self._max_x = 0
+        self._min_x = 0
+        self._max_y = 0
+        self._min_y = 0
+
     
     def get_icon(self):
         return self._icon
@@ -41,13 +46,30 @@ class Entity:
     def set_velocity(self, v):
         self._velocity = v
 
-    def update_pos(self, max_x, max_y):
+    def set_max(self, x, y):
+        self._max_x = x
+        self._max_y = y
+
+    def set_min(self, x, y):
+        self._min_x = x
+        self._min_y = y
+
+    def update_pos(self):
         new_pos = self._position.point_2d()
         new_pos[0] += self._velocity.point_2d()[0]
         new_pos[1] += self._velocity.point_2d()[1]
-
-        new_pos[0] = 0 if new_pos[0] < 0 else max_x if new_pos[0] > max_x else new_pos[0]
-        new_pos[1] = 0 if new_pos[1] < 0 else max_y if new_pos[1] > max_y else new_pos[1]
+        
+        if (new_pos[0] > self._max_x):
+            new_pos[0] = self._max_x
+        elif (new_pos[0] < self._min_x):
+            new_pos[0] = self._min_x
+        
+        if (new_pos[1] > self._max_y):
+            new_pos[1] = self._max_y
+        elif (new_pos[1] < self._min_y):
+            new_pos[1] = self._min_y
+        
+        
 
 
 

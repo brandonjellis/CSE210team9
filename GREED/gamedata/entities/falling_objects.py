@@ -4,4 +4,12 @@
 from entity import Entity
 
 class Object(Entity):
-    pass
+    def __init__(self):
+        super().__init__()
+        self._points = 100
+
+    def get_points(self):
+        return self._points
+
+    def set_points(self, points):
+        self._points = points
