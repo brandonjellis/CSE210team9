@@ -19,8 +19,8 @@ class Video_Service:
     def draw_actor(self, entity):
         text = entity.get_icon()
         point = entity.get_position().point_2d()
-        px = point[0]
-        py = point[1]
+        px = int(point[0])
+        py = int(point[1])
         font_size = entity.get_size()
         color = entity.get_color().get_color()
         pyray.draw_text(text, px, py, font_size, color)

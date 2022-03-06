@@ -18,7 +18,7 @@ class Gamemaster:
         self._video = video
         self._entities = Entity_Manager()
         self._score = 0
-        self._max_objects = 20
+        self._max_objects = 200
         
 
     def start_game(self):
@@ -34,8 +34,11 @@ class Gamemaster:
     def create_player(self):
         player = Entity(True)
         mx = self._video.get_width()
-        my = self._video.get_height() /2
+        my = self._video.get_height()
+        min_x = 0
+        min_y = self._video.get_height() /2
         player.set_max(mx, my)
+        player.set_min(min_x,min_y)
         player.set_icon("#")
         player.set_color(Color())
         player.set_size(15)
@@ -44,11 +47,20 @@ class Gamemaster:
 
         self._entities.add_entitiy("player",player)
 
+    def create_banner(self):
+        banner = Entity()
+        banner.set_position(Point(0,0))
+        banner.set_color(Color())
+        banner.set_size(30)
+        banner.set_icon("")
+
+        self._entities.add_entitiy("banners",banner)
+
     def create_gem(self):
         gem = Object()
         y = 0
         x = randint(0, self._video.get_width())
-        gem.set_velocity(Point(0,randint(-3,-1)))
+        gem.set_velocity(Point(0,randint(1,5)))
         gem.set_position(Point(x,y))
         r = randint(150,255)
         g = randint(150,255)
@@ -65,7 +77,7 @@ class Gamemaster:
         rock = Object()
         y = 0
         x = randint(0, self._video.get_width())
-        rock.set_velocity(Point(0,randint(-3,-1)))
+        rock.set_velocity(Point(0,randint(1,5)))
         rock.set_position(Point(x,y))
         r = randint(50,150)
         g = randint(50,150)
@@ -80,6 +92,7 @@ class Gamemaster:
 
     def initialize(self):
         self.create_player()
+        self.create_banner()
 
     def inputs(self):
         player = self._entities.get_first_entity("player")
@@ -89,19 +102,26 @@ class Gamemaster:
     def update_gamestate(self):
         player = self._entities.get_first_entity("player")
         objects = self._entities.get_entities("objects")
+        banner = self._entities.get_first_entity("banners")
 
         player.update_pos()
 
         for object in objects:
-            if (object.get_position.point_2d[1] < self._video.get_height()):
-                self._entities.del_entity(object)
-            elif (player.get_position.distance(object.get_position.point_2d()) < 15):
+            object.update_pos()
+            if (object.get_position().point_2d()[1] > self._video.get_height()):
+                self._entities.del_entity("objects",object)
+            elif (player.get_position().distance(object.get_position().point_2d()) < 15):
                 self._score += object.get_points()
-                self._entities.del_entity(object)
+                self._entities.del_entity("objects",object)
 
         while(len(self._entities.get_entities("objects")) < self._max_objects):
             self.create_gem()
             self.create_rock()
+
+        score_msg = "SCORE: " + str(self._score)
+        banner.set_icon(score_msg)
+
+        
 
     def outputs(self):
         self._video.clear_buffer()

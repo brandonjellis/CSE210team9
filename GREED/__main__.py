@@ -3,8 +3,8 @@ from gamedata.services.keyboard_service import Keyboard_Service
 from gamedata.control.gamemaster import Gamemaster
 
 FRAME_RATE = 30
-MAX_X = 900
-MAX_Y = 600
+MAX_X = 1280
+MAX_Y = 720
 
 CAPTION = "Greed"
 

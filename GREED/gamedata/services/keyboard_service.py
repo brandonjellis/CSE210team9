@@ -12,18 +12,19 @@ class Keyboard_Service:
     def get_position(self):
         dx = 0
         dy = 0
+        s = 8
     
         if pyray.is_key_down(pyray.KEY_LEFT):
-            dx = -1
+            dx = -s
 
         if pyray.is_key_down(pyray.KEY_RIGHT):
-            dx = 1
+            dx = s
 
         if pyray.is_key_down(pyray.KEY_UP):
-            dy = -1
+            dy = -s
 
         if pyray.is_key_down(pyray.KEY_DOWN):
-            dy = 1
+            dy = s
 
         position = Point(dx, dy)
 

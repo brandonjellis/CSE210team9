@@ -1,27 +1,6 @@
 #Contains classes defining specialty datatypes used throughout the program.
-import math
+from math import sqrt
 
-class Vector:
-    def __init__(self,x = 0, y = 0, z = 0):
-        self._xdir = x
-        self._ydir = y
-        self._zdir = z
-
-    def get_magnitude(self):
-        m = math.sqrt((self._xdir)**2 + (self._ydir)**2 + (self._zdir)**2)
-        return m
-
-    def get_component(self):
-        return (self._xdir, self._ydir, self._zdir)
-
-    def set_x(self,x):
-        self._xdir = x
-
-    def set_y(self,y):
-        self._ydir = y
-
-    def set_z(self,z):
-        self._zdir = z
 
 class Point:
     def __init__(self, x=0, y=0, z=0):
@@ -48,7 +27,7 @@ class Point:
         dx = self._xp - target[0]
         dy = self._yp - target[1]
         dz = self._zp - t
-        return math.sqrt(dx**2 + dy**2 + dz**2)
+        return sqrt(dx**2 + dy**2 + dz**2)
 
 
 
