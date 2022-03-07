@@ -39,6 +39,8 @@ class DrawActorsAction(Action):
         self._video_service.clear_buffer()
         self._video_service.draw_actors(segments_1)
         self._video_service.draw_actors(segments_2)
+        self._video_service.draw_actor(cycle_1)
+        self._video_service.draw_actor(cycle_2)
         self._video_service.draw_actor(score_1)
         self._video_service.draw_actor(score_2)
         self._video_service.draw_actors(messages, True)
