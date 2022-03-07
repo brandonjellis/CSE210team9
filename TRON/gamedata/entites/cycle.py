@@ -1,9 +1,9 @@
 import constants
-from game.casting.actor import Actor
-from game.shared.point import Point
+from gamedata.entites.entity import Entity
+from gamedata.misc.point import Point
 
 
-class Snake(Actor):
+class Snake(Entity):
     """
     A long limbless reptile.
     
@@ -41,7 +41,7 @@ class Snake(Actor):
             offset = velocity.reverse()
             position = tail.get_position() + (offset)
             
-            segment = Actor()
+            segment = Entity()
             segment.set_position(position)
             segment.set_velocity(velocity)
             segment.set_text("#")
@@ -61,7 +61,7 @@ class Snake(Actor):
             text = "8" if i == 0 else "#"
             color = constants.YELLOW if i == 0 else constants.GREEN
             
-            segment = Actor()
+            segment = Entity()
             segment.set_position(position)
             segment.set_velocity(velocity)
             segment.set_text(text)

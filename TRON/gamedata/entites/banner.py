@@ -1,7 +1,7 @@
-from game.casting.actor import Actor
+from gamedata.entites.entity import Entity
 
 
-class Score(Actor):
+class Score(Entity):
     """
     A record of points made or lost. 
     

@@ -1,7 +1,7 @@
 import constants
-from game.casting.actor import Actor
-from game.scripting.action import Action
-from game.shared.point import Point
+from gamedata.entites.entity import Entity
+from gamedata.control.action import Action
+from gamedata.misc.point import Point
 
 class HandleCollisionsAction(Action):
     """
@@ -76,7 +76,7 @@ class HandleCollisionsAction(Action):
             y = int(constants.MAX_Y / 2)
             position = Point(x, y)
 
-            message = Actor()
+            message = Entity()
             message.set_text("Game Over!")
             message.set_position(position)
             cast.add_actor("messages", message)

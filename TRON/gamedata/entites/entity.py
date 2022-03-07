@@ -1,9 +1,9 @@
 import constants
-from game.shared.color import Color
-from game.shared.point import Point
+from gamedata.misc.color import Color
+from gamedata.misc.point import Point
 
 
-class Actor:
+class Entity:
     """A visible, moveable thing that participates in the game. 
     
     The responsibility of Actor is to keep track of its appearance, position and velocity in 2d 
