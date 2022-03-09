@@ -1,4 +1,4 @@
-from TRON.gamedata.entites.cycle import Snake
+from gamedata.entites.cycle import Cycle
 from gamedata.control.action import Action
 
 
