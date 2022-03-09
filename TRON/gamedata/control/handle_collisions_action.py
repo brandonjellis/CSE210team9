@@ -56,29 +56,27 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        cycle_1 = cast.get_first_actor("p1")
-        head_1 = cycle_1.get_segments()[0]
-        segments_1 = cycle_1.get_segments()[1:]
+        cycle_1_head = cast.get_first_actor("p1")
+        segments_1 = cycle_1_head.get_trail()
 
-        cycle_2 = cast.get_first_actor("p2")
-        head_2 = cycle_2.get_segments()[0]
-        segments_2 = cycle_2.get_segments()[1:]
+        cycle_2_head = cast.get_first_actor("p2")
+        segments_2 = cycle_2_head.get_trail()
         
         for segment in segments_1:
-            if head_1.get_position() == segment.get_position():
+            if cycle_1_head.get_position() == segment.get_position():
                 self._is_game_over = True
                 self._winner = "p2"
 
-            elif head_2.get_position() == segment.get_position():
+            elif cycle_2_head.get_position() == segment.get_position():
                 self._is_game_over = True
                 self._winner = "p1"
 
         for segment in segments_2:
-            if head_2.get_position() == segment.get_position():
+            if cycle_2_head.get_position() == segment.get_position():
                 self._is_game_over = True
                 self._winner = "p1"
 
-            elif head_1.get_position() == segment.get_position():
+            elif cycle_1_head.get_position() == segment.get_position():
                 self._is_game_over = True
                 self._winner = "p2"
         
@@ -94,22 +92,26 @@ class HandleCollisionsAction(Action):
             
             cycle_2 = cast.get_first_actor("p2")
             segments_2 = cycle_2.get_segments()
-            
-
-            x = int(constants.MAX_X / 2)
-            y = int(constants.MAX_Y / 2)
-            position = Point(x, y)
-
-            message = Entity()
-            message.set_text("Game Over!")
-            message.set_position(position)
-            cast.add_actor("messages", message)
 
             if self._winner == "p1":
                 for segment in segments_2:
                     segment.set_color(constants.WHITE)
 
+                winner = "Player 1"
+
             if self._winner == "p2":
                 for segment in segments_1:
                     segment.set_color(constants.WHITE)
+
+                winner = "Player 2"
+
+            x = int(constants.MAX_X / 2)
+            y = int(constants.MAX_Y / 2)
+            position = Point(x, y)
+
+            message_1 = "Game Over\n" + winner + "Wins!\n" + "Press SPACE to play again! "
+            message = Entity()
+            message.set_text(message_1)
+            message.set_position(position)
+            cast.add_actor("messages", message)
             
