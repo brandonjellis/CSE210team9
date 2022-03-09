@@ -51,11 +51,12 @@ def main():
     ent_list = Entity_Manager()
     ent_list.add_actor("scores",Score())
     ent_list.add_actor("scores",Score())
+    
     ks = KeyboardService()
     vs = VideoService()
 
     script = build_script(ks,vs)
-
+    
     vs.open_window()
 
     op_msg = Score()
@@ -73,5 +74,5 @@ def main():
 
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     main()
