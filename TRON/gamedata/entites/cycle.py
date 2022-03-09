@@ -27,9 +27,6 @@ class Cycle(Entity):
     def get_trail(self):
         return self._segments
 
-    def get_head(self):
-        return self._segments[0]
-
     def turn_head(self, velocity):
         self.set_velocity(velocity)
     

@@ -15,3 +15,7 @@ RED = Color(255, 0, 0)
 BLUE = Color(0,0,255)
 YELLOW = Color(255, 255, 0)
 GREEN = Color(0, 255, 0)
+
+STARTY = 300
+P1_STARTX = 150
+P2_STARTX = 450
