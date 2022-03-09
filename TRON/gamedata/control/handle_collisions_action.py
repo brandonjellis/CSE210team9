@@ -64,20 +64,20 @@ class HandleCollisionsAction(Action):
         segments_2 = cycle_2.get_segments()[1:]
         
         for segment in segments_1:
-            if head_1.get_position().equals(segment.get_position()):
+            if head_1.get_position() == segment.get_position():
                 self._is_game_over = True
                 self._winner = "p2"
 
-            elif head_2.get_position().equals(segment.get_position()):
+            elif head_2.get_position() == segment.get_position():
                 self._is_game_over = True
                 self._winner = "p1"
 
         for segment in segments_2:
-            if head_2.get_position().equals(segment.get_position()):
+            if head_2.get_position() == segment.get_position():
                 self._is_game_over = True
                 self._winner = "p1"
 
-            elif head_1.get_position().equals(segment.get_position()):
+            elif head_1.get_position() == segment.get_position():
                 self._is_game_over = True
                 self._winner = "p2"
         
