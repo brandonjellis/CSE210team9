@@ -2,6 +2,7 @@ import constants
 from gamedata.entites.entity import Entity
 from gamedata.control.action import Action
 from gamedata.misc.point import Point
+from gamedata.entites.banner import Score
 
 class HandleCollisionsAction(Action):
     """
@@ -17,6 +18,7 @@ class HandleCollisionsAction(Action):
     def __init__(self):
         """Constructs a new HandleCollisionsAction."""
         self._is_game_over = False
+        self._winner = ""
 
     def execute(self, cast, script):
         """Executes the handle collisions action.
@@ -36,41 +38,62 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        score = cast.get_first_actor("scores")
-        food = cast.get_first_actor("foods")
-        snake = cast.get_first_actor("snakes")
-        head = snake.get_head()
+        score_1 = cast.get_first_actor("scores")
+        score_2 = cast.get_first_actor("scores")
+        points = 1
 
-        if head.get_position().equals(food.get_position()):
-            points = food.get_points()
-            snake.grow_tail(points)
-            score.add_points(points)
-            food.reset()
+
+        if self._winner == "p1":
+            score_1.add_points(points)
+        
+        elif self._winner == "p2":
+            score_2.add_points(points)
     
     def _handle_segment_collision(self, cast):
-        """Sets the game over flag if the snake collides with one of its segments.
+        """Sets the game over flag if the snake collides with one of its segments or other snake's segments.
         
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        snake = cast.get_first_actor("snakes")
-        head = snake.get_segments()[0]
-        segments = snake.get_segments()[1:]
+        cycle_1 = cast.get_first_actor("p1")
+        head_1 = cycle_1.get_segments()[0]
+        segments_1 = cycle_1.get_segments()[1:]
+
+        cycle_2 = cast.get_first_actor("p2")
+        head_2 = cycle_2.get_segments()[0]
+        segments_2 = cycle_2.get_segments()[1:]
         
-        for segment in segments:
-            if head.get_position().equals(segment.get_position()):
+        for segment in segments_1:
+            if head_1.get_position().equals(segment.get_position()):
                 self._is_game_over = True
+                self._winner = "p2"
+
+            elif head_2.get_position().equals(segment.get_position()):
+                self._is_game_over = True
+                self._winner = "p1"
+
+        for segment in segments_2:
+            if head_2.get_position().equals(segment.get_position()):
+                self._is_game_over = True
+                self._winner = "p1"
+
+            elif head_1.get_position().equals(segment.get_position()):
+                self._is_game_over = True
+                self._winner = "p2"
         
     def _handle_game_over(self, cast):
-        """Shows the 'game over' message and turns the snake and food white if the game is over.
+        """Shows the 'game over' message and turns the loser snake white if the game is over.
         
         Args:
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_over:
-            snake = cast.get_first_actor("snakes")
-            segments = snake.get_segments()
-            food = cast.get_first_actor("foods")
+            cycle_1 = cast.get_first_actor("p1")
+            segments_1 = cycle_1.get_segments()
+            
+            cycle_2 = cast.get_first_actor("p2")
+            segments_2 = cycle_2.get_segments()
+            
 
             x = int(constants.MAX_X / 2)
             y = int(constants.MAX_Y / 2)
@@ -81,6 +104,11 @@ class HandleCollisionsAction(Action):
             message.set_position(position)
             cast.add_actor("messages", message)
 
-            for segment in segments:
-                segment.set_color(constants.WHITE)
-            food.set_color(constants.WHITE)
+            if self._winner == "p1":
+                for segment in segments_2:
+                    segment.set_color(constants.WHITE)
+
+            if self._winner == "p2":
+                for segment in segments_1:
+                    segment.set_color(constants.WHITE)
+            
