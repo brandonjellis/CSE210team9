@@ -31,8 +31,8 @@ class DrawActorsAction(Action):
         score_2 = cast.get_actors("scores")[1]
         cycle_1 = cast.get_first_actor("p1")
         cycle_2 = cast.get_first_actor("p2")
-        segments_1 = cycle_1.get_segments()
-        segments_2 = cycle_2.get_segments()
+        segments_1 = cycle_1.get_trail()
+        segments_2 = cycle_2.get_trail()
 
         messages = cast.get_actors("messages")
 

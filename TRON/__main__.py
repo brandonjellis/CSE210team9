@@ -3,7 +3,7 @@ import constants as c
 from gamedata.entites.entity_manager import Entity_Manager
 from gamedata.entites.entity import Entity
 from gamedata.entites.cycle import Cycle
-from gamedata.entites.banner import Score
+from gamedata.entites.banner import Banner
 
 from gamedata.control.script import Script
 from gamedata.control.control_actors_action import ControlActorsAction
@@ -17,57 +17,67 @@ from gamedata.services.video_service import VideoService
 from gamedata.misc.color import Color
 from gamedata.misc.point import Point
 
+ks = KeyboardService()
+vs = VideoService()
 
-def build_script(ks,vs):
+def build_script():
     script = Script()
     script.add_action("gameloop",ControlActorsAction(ks))
     script.add_action("gameloop",MoveActorsAction())
     script.add_action("gameloop",HandleCollisionsAction())
     script.add_action("gameloop",DrawActorsAction(vs))
+
+    script.add_action("menu",ControlActorsAction(ks))
+    script.add_action("menu",DrawActorsAction(vs))
+    
     return script
 
 
-def start_round(ent_list, script):
-    p1_pos = Point(c.P1_STARTX,c.STARTY)
-    p2_pos = Point(c.P2_STARTX,c.STARTY)
-    p1_vel = Point(0,-c.CELL_SIZE)
-    p2_vel = Point(0,c.CELL_SIZE)
-    p1 = Cycle(c.BLUE, p1_pos, p1_vel)
-    p2 = Cycle(c.YELLOW, p2_pos, p2_vel)
+def start_game(ent_list, script):
+    p1_score = Banner(Color(), Point(0,0), Point(0,0), "Player 1 Score: ")
+    p2_score = Banner(Color(), Point(0,15), Point(0,0), "Player 2 Score: ")
+    ent_list.add_actor("scores",p1_score)
+    ent_list.add_actor("scores",p2_score)
 
-    ent_list.add_actor("p1",p1)
-    ent_list.add_actor("p2",p2)
-    
-    ent_list.remove_actor("messages",ent_list.get_first_actor("messages"))
-
-    game_over = False
-    while game_over != True:
-        actions = script.get_actions("gameloop")
+    def execute(act_list):
+        actions = script.get_actions(act_list)
         for action in actions:
-            game_over = action.execute(ent_list,script)
-    
+            game = action.execute(ent_list,script)
+
+    def reset():
+        ent_list.remove_actors("p1")
+        ent_list.remove_actors("p2")
+
+        p1_pos = Point(c.P1_STARTX,c.STARTY)
+        p2_pos = Point(c.P2_STARTX,c.STARTY)
+        p1_vel = Point(0,c.CELL_SIZE)
+        p2_vel = Point(0,c.CELL_SIZE*-1)
+        p1 = Cycle(c.BLUE, p1_pos, p1_vel,"@")
+        p2 = Cycle(c.YELLOW, p2_pos, p2_vel,"@")
+
+        ent_list.add_actor("p1",p1)
+        ent_list.add_actor("p2",p2)
+    pass
+
 
 def main():
     ent_list = Entity_Manager()
-    ent_list.add_actor("scores",Score())
-    ent_list.add_actor("scores",Score())
+    ent_list.add_actor("Banners",Banner())
+    ent_list.add_actor("Banners",Banner())
     
-    ks = KeyboardService()
-    vs = VideoService()
 
-    script = build_script(ks,vs)
+
+    script = build_script()
     
     vs.open_window()
 
-    op_msg = Score()
+    op_msg = Banner()
     op_msg.set_text("Welcome!\nPress SPACE to begin.")
     op_msg.set_position(Point(c.MAX_X/2,c.MAX_Y/2))
-    vs.draw_actor(op_msg)
 
-    while vs.is_window_open():
-        if ks.is_key_down("space"):
-            start_round(ent_list,script)
-    vs.close_window()
+    ent_list.add_actor("messages",op_msg)
+
+    start_game(ent_list,script)
     
 
 

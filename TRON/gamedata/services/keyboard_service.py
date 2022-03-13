@@ -1,5 +1,5 @@
 import pyray
-from gamedata.misc.point import Point
+#from gamedata.misc.point import Point
 
 
 class KeyboardService:
@@ -25,7 +25,7 @@ class KeyboardService:
         self._keys['k'] = pyray.KEY_K
         self._keys['l'] = pyray.KEY_L
 
-        self._keys['space'] = pyray.KEY_SPACE
+        self._keys["space"] = pyray.KEY_SPACE
 
     def is_key_up(self, key):
         """Checks if the given key is currently up.
@@ -44,3 +44,13 @@ class KeyboardService:
         """
         pyray_key = self._keys[key.lower()]
         return pyray.is_key_down(pyray_key)
+
+    def is_key_pressed(self, key):
+        """Checks if the given key is currently down.
+        
+        Args:
+            key (string): The given key (w, a, s, d or i, j, k, l)
+        """
+        pyray_key = self._keys[key.lower()]
+        return pyray.is_key_pressed(pyray_key)
+

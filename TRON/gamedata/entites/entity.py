@@ -18,9 +18,9 @@ class Entity:
         _velocity (Point): The speed and direction.
     """
 
-    def __init__(self, color = Color(255,255,255), position = Point(0,0), velocity = Point(0,0)):
+    def __init__(self, color = Color(255,255,255), position = Point(0,0), velocity = Point(0,0), text = ""):
         """Constructs a new Actor."""
-        self._text = ""
+        self._text = text
         self._font_size = 15
         self._color = color
         self._position = position

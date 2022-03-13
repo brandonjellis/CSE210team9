@@ -73,3 +73,8 @@ class Entity_Manager:
         """
         if group in self._actors:
             self._actors[group].remove(actor)
+    
+    def remove_actors(self, group):
+        if group in self._actors:
+            for actor in self._actors[group]:
+                self._actors[group].remove(actor)

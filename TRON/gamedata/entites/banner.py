@@ -1,7 +1,7 @@
 from gamedata.entites.entity import Entity
 
 
-class Score(Entity):
+class Banner(Entity):
     """
     A record of points made or lost. 
     
@@ -12,9 +12,10 @@ class Score(Entity):
     Attributes:
         _points (int): The points earned in the game.
     """
-    def __init__(self):
-        super().__init__()
+    def __init__(self,color, position, velocity, default_text = ""):
+        super().__init__(color, position, velocity, default_text)
         self._points = 0
+        self._dtxt = default_text
         self.add_points(0)
 
     def add_points(self, points):
@@ -24,4 +25,4 @@ class Score(Entity):
             points (int): The points to add.
         """
         self._points += points
-        self.set_text(f"Score: {self._points}")
+        self.set_text(self._dtxt + points)

@@ -12,13 +12,13 @@ class Cycle(Entity):
     Attributes:
         _points (int): The number of points the food is worth.
     """
-    def __init__(self,color,position,velocity):
-        super().__init__(color,position,velocity)
+    def __init__(self,color,position,velocity,text = ""):
+        super().__init__(color,position,velocity,text)
         self._segments = []
 
     def move_next(self):
 
-        light_seg = Entity(color=self._color,position=self._position)
+        light_seg = Entity(color=self._color,position=self._position, text = "#")
         self._segments.append(light_seg)
         x = (self._position.get_x() + self._velocity.get_x()) % constants.MAX_X
         y = (self._position.get_y() + self._velocity.get_y()) % constants.MAX_Y
