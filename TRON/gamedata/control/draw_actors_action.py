@@ -12,13 +12,14 @@ class DrawActorsAction(Action):
         _video_service (VideoService): An instance of VideoService.
     """
 
-    def __init__(self, video_service):
+    def __init__(self, video_service, game = False):
         """Constructs a new DrawActorsAction using the specified VideoService.
         
         Args:
             video_service (VideoService): An instance of VideoService.
         """
         self._video_service = video_service
+        self._game = game
 
     def execute(self, cast, script):
         """Executes the draw actors action.
@@ -27,21 +28,21 @@ class DrawActorsAction(Action):
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
-        score_1 = cast.get_actors("scores")[0]
-        score_2 = cast.get_actors("scores")[1]
-        cycle_1 = cast.get_first_actor("p1")
-        cycle_2 = cast.get_first_actor("p2")
-        segments_1 = cycle_1.get_trail()
-        segments_2 = cycle_2.get_trail()
-
-        messages = cast.get_actors("messages")
-
         self._video_service.clear_buffer()
-        self._video_service.draw_actors(segments_1)
-        self._video_service.draw_actors(segments_2)
-        self._video_service.draw_actor(cycle_1)
-        self._video_service.draw_actor(cycle_2)
-        self._video_service.draw_actor(score_1)
-        self._video_service.draw_actor(score_2)
+
+        if self._game:
+            cycle_1 = [cast.get_first_actor("p1")]
+            cycle_2 = [cast.get_first_actor("p2")]
+            if cycle_1[0] != None:
+                cycle_1.extend(cycle_1[0].get_trail())
+                self._video_service.draw_actors(cycle_1)
+            if cycle_2[0] != None:
+                cycle_2.extend(cycle_2[0].get_trail())
+                self._video_service.draw_actors(cycle_2)
+
+        
+        scores = cast.get_actors("scores")
+        messages = cast.get_actors("banners")
+        self._video_service.draw_actors(scores)
         self._video_service.draw_actors(messages, True)
         self._video_service.flush_buffer()

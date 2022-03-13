@@ -10,6 +10,7 @@ from gamedata.control.control_actors_action import ControlActorsAction
 from gamedata.control.move_actors_action import MoveActorsAction
 from gamedata.control.handle_collisions_action import HandleCollisionsAction
 from gamedata.control.draw_actors_action import DrawActorsAction
+from gamedata.control.handle_menu_action import HandleMenu
 
 from gamedata.services.keyboard_service import KeyboardService
 from gamedata.services.video_service import VideoService
@@ -22,63 +23,63 @@ vs = VideoService()
 
 def build_script():
     script = Script()
-    script.add_action("gameloop",ControlActorsAction(ks))
+    script.add_action("gameloop",ControlActorsAction(ks)) 
     script.add_action("gameloop",MoveActorsAction())
     script.add_action("gameloop",HandleCollisionsAction())
-    script.add_action("gameloop",DrawActorsAction(vs))
+    script.add_action("gameloop",DrawActorsAction(vs,True))
 
-    script.add_action("menu",ControlActorsAction(ks))
     script.add_action("menu",DrawActorsAction(vs))
+    script.add_action("menu",HandleMenu(ks))
     
     return script
 
 
 def start_game(ent_list, script):
-    p1_score = Banner(Color(), Point(0,0), Point(0,0), "Player 1 Score: ")
-    p2_score = Banner(Color(), Point(0,15), Point(0,0), "Player 2 Score: ")
-    ent_list.add_actor("scores",p1_score)
-    ent_list.add_actor("scores",p2_score)
-
+    
     def execute(act_list):
         actions = script.get_actions(act_list)
-        for action in actions:
-            game = action.execute(ent_list,script)
+        gamestate = False
+        while not gamestate:
+            for action in actions:
+                status = action.execute(ent_list,script)
+                if status != None:
+                    gamestate = status
+
 
     def reset():
-        ent_list.remove_actors("p1")
-        ent_list.remove_actors("p2")
-
         p1_pos = Point(c.P1_STARTX,c.STARTY)
         p2_pos = Point(c.P2_STARTX,c.STARTY)
         p1_vel = Point(0,c.CELL_SIZE)
-        p2_vel = Point(0,c.CELL_SIZE*-1)
+        p2_vel = Point(0,c.CELL_SIZE)
+        ent_list.remove_actors("p1")
+        ent_list.remove_actors("p2")
         p1 = Cycle(c.BLUE, p1_pos, p1_vel,"@")
         p2 = Cycle(c.YELLOW, p2_pos, p2_vel,"@")
-
         ent_list.add_actor("p1",p1)
         ent_list.add_actor("p2",p2)
+
+    reset()
+    while vs.is_window_open():
+        execute("menu")
+        reset()
+        execute("gameloop")
+    
     pass
 
 
 def main():
     ent_list = Entity_Manager()
-    ent_list.add_actor("Banners",Banner())
-    ent_list.add_actor("Banners",Banner())
-    
-
-
+    p1_score = Banner(Color(255,255,255), Point(0,0), Point(0,0), "Player 1 Score: ")
+    p2_score = Banner(Color(255,255,255), Point(0,15), Point(0,0), "Player 2 Score: ")
+    open_msg = Banner(Color(255,255,255), Point(c.MAX_X/2,c.MAX_Y/2), Point(0,0), "Welcome!\nPress SPACE to Start!")
+    ent_list.add_actor("banners",open_msg)
+    ent_list.add_actor("scores",p1_score)
+    ent_list.add_actor("scores",p2_score)
     script = build_script()
     
     vs.open_window()
-
-    op_msg = Banner()
-    op_msg.set_text("Welcome!\nPress SPACE to begin.")
-    op_msg.set_position(Point(c.MAX_X/2,c.MAX_Y/2))
-
-    ent_list.add_actor("messages",op_msg)
-
     start_game(ent_list,script)
-    
+    vs.close_window()
 
 
 

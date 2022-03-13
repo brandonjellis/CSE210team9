@@ -25,4 +25,5 @@ class Banner(Entity):
             points (int): The points to add.
         """
         self._points += points
-        self.set_text(self._dtxt + points)
+        msg = self._dtxt + str(points)
+        self.set_text(msg)

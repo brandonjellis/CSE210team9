@@ -2,7 +2,7 @@ import constants
 from gamedata.entites.entity import Entity
 from gamedata.control.action import Action
 from gamedata.misc.point import Point
-from gamedata.entites.banner import Score
+from gamedata.entites.banner import Banner
 
 class HandleCollisionsAction(Action):
     """
@@ -27,9 +27,12 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
+        self._is_game_over = False
+        self._winner = ""
+
         if not self._is_game_over:
-            self._handle_score_collision(cast)
             self._handle_segment_collision(cast)
+            self._handle_score_collision(cast)
             self._handle_game_over(cast)
         return self._is_game_over
 
@@ -39,8 +42,8 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        score_1 = cast.get_first_actor("scores")
-        score_2 = cast.get_first_actor("scores")
+        score_1 = cast.get_actors("scores")[0]
+        score_2 = cast.get_actors("scores")[1]
         points = 1
 
 
@@ -113,5 +116,5 @@ class HandleCollisionsAction(Action):
             message = Entity()
             message.set_text(message_1)
             message.set_position(position)
-            cast.add_actor("messages", message)
+            cast.add_actor("banners", message)
             
