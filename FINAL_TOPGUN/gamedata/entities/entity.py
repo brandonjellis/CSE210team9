@@ -13,6 +13,7 @@ class Entity:
         self._velocity = velocity
         self._animation = Animation()
 
+
     def get_position(self):
         return self._position
 
@@ -21,6 +22,9 @@ class Entity:
 
     def get_animation(self):
         return self._animation
+
+    def get_image(self):
+        return self.get_animation.get_image()
 
     def move_next(self):
         x = (self._position.get_x() + self._velocity.get_x()) % constants.MAX_X
