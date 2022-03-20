@@ -1,4 +1,4 @@
-from FINAL_TOPGUN.gamedata.entities.entity import Entity
+from gamedata.entities.entity import Entity
 
 
 class Player(Entity):
