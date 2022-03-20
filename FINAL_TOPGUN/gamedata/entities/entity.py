@@ -1,6 +1,5 @@
 
 import constants
-from gamedata.datatypes.color import Color
 from gamedata.datatypes.point import Point
 from gamedata.datatypes.animation import Animation
 
