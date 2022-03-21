@@ -9,7 +9,7 @@ class Animation:
     '''
     def __init__(self, delay = 1, loop = False, images = [Image()]):
         self._images = images
-        self._frame = self._
+        self._frame = self._images[0]
         self._index = 0
         self._delay = delay
         self._loop = loop
