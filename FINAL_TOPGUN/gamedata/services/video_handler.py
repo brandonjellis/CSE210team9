@@ -7,7 +7,7 @@ from gamedata.datatypes.text import Text
 
 
 
-class RaylibVideoService:
+class VideoHandler:
     """ A Raylib implementation of VideoService."""
 
     def __init__(self, title = "", width = 640, height = 480, color = BLACK):
