@@ -9,7 +9,7 @@ class BorderCollision(Action):
         self._physics_service = physics_service
 
     def execute(self, entities, script, callback):
-        player = entities.get_first_entity("player")
+        player = entities.get_first_entity(PLAYER_GROUP)
         position = player.get_position()
         x = position.get_x()
         y = position.get_y()
