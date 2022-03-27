@@ -1,7 +1,7 @@
 
 from gamedata.datatypes.point import Point
 from gamedata.scripting.action import Action
-from FINAL_TOPGUN.constants import *
+from constants import *
 
 
 class BorderCollision(Action):

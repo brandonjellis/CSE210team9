@@ -14,15 +14,19 @@ class PlayerBullets(Action):
         player_position = player.get_position()
         x = player_position.get_x() + PLAYER_WIDTH/2
         y = player_position.get_y()
+
         bullet_position = Point(x,y)
         bullet_size = Point(BULLET_WIDTH,BULLET_HEIGHT)
+        bullet_velocity = Point(0, -BULLET_VELOCITY)
 
-        bullet = entities.get_first_entity("bullet")
-        bullet.set_position(bullet_position)
-        bullet.set_velocity(BULLET_VELOCITY)
-        bullet.set_size(bullet_size)
-        bullet.set_animation(BULLET_IMAGE)
+        new_bullet = Bullet()
+        new_bullet.set_position(bullet_position)
+        new_bullet.set_velocity(bullet_velocity)
+        new_bullet.set_size(bullet_size)
+        new_bullet.set_animation(images = BULLET_IMAGE)
 
+        bullet = entities.add_entity("bullet", new_bullet)
+        
 
         
 
