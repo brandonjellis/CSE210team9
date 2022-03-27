@@ -1,4 +1,4 @@
-import imp
+
 from gamedata.datatypes.point import Point
 from gamedata.entities.bullet import Bullet
 from gamedata.scripting.action import Action
