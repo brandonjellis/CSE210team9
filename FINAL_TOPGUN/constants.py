@@ -28,3 +28,15 @@ WHITE = Color(255,255,255)
 
 #KEYBINDS
 
+#ENTITY GROUPS
+PLAYER = "player"
+ENEMY = "enemy"
+BULLET_PLAYER = "p_bullet"
+BULLET_ENEMY = "e_bullet"
+BACKGROUND = "background"
+
+
+#SCRIPT GROUPS
+INPUT = "input"
+UPDATE = "update"
+OUTPUT = "output"

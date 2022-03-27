@@ -1,5 +1,4 @@
 
-from turtle import width
 import constants
 from gamedata.datatypes.point import Point
 from gamedata.datatypes.animation import Animation
@@ -28,7 +27,7 @@ class Entity:
         return self._animation
 
     def get_image(self):
-        return self.get_animation.get_image()
+        return self._animation.get_image()
 
     def move_next(self):
         x = (self._position.get_x() + self._velocity.get_x()) % constants.MAX_X
