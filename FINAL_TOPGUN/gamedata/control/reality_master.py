@@ -16,7 +16,7 @@ from gamedata.scripting.initialize_handlers import InitializeDevicesAction
 
 class RealityMaster:
     """
-    generates the loop script for each state of the game, returns script to be run to game master. 
+    generates the loop script for each state of the game and creates initial entities, returns script to be run to game master. 
     """
     def __init__(self,video,keyboard,physics,audio):
         self._vs = video
@@ -52,4 +52,5 @@ class RealityMaster:
         player = Player(start_pos,start_vel,ent_size)
         player_animation = Animation(images = PLAYER_IMAGES)
         player.set_animation(player_animation)
+
     #SCRIPT METHODS

@@ -1,8 +1,8 @@
 import imp
-from FINAL_TOPGUN.gamedata.datatypes.point import Point
-from FINAL_TOPGUN.gamedata.entities.bullet import Bullet
+from gamedata.datatypes.point import Point
+from gamedata.entities.bullet import Bullet
 from gamedata.scripting.action import Action
-from FINAL_TOPGUN.constants import *
+from constants import *
 
 
 class PlayerBullets(Action):
