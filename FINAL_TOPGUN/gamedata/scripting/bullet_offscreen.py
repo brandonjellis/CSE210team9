@@ -1,3 +1,4 @@
+from FINAL_TOPGUN.constants import BULLET_PLAYER_GROUP
 from gamedata.scripting.action import Action
 
 class BulletOffscreen(Action):
@@ -5,8 +6,8 @@ class BulletOffscreen(Action):
         super().__init__()
 
     def execute(self, entities, script, callback):
-        bullets = entities.get_entities("bullet")
+        bullets = entities.get_entities(BULLET_PLAYER_GROUP)
         for bullet in bullets:
             position = bullet.get_position()
             if position.get_y() < 0:
-                entities.remove_entity("bullet", bullet)
+                entities.remove_entity(BULLET_PLAYER_GROUP, bullet)

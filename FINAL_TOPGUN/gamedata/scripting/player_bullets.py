@@ -1,4 +1,3 @@
-import imp
 from gamedata.datatypes.point import Point
 from gamedata.entities.bullet import Bullet
 from gamedata.scripting.action import Action
@@ -10,7 +9,7 @@ class PlayerBullets(Action):
         super().__init__()
 
     def execute(self, entities, script, callback):
-        player = entities.get_first_entity("player")
+        player = entities.get_first_entity(PLAYER_GROUP)
         player_position = player.get_position()
         x = player_position.get_x() + PLAYER_WIDTH/2
         y = player_position.get_y()
@@ -25,7 +24,7 @@ class PlayerBullets(Action):
         new_bullet.set_size(bullet_size)
         new_bullet.set_animation(images = BULLET_IMAGE)
 
-        bullet = entities.add_entity("bullet", new_bullet)
+        bullet = entities.add_entity(BULLET_PLAYER_GROUP, new_bullet)
         
 
         
