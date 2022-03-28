@@ -2,6 +2,7 @@
 contains a list of constants to be used by the entire program
 if a piece of data does not change, put it here!
 """
+from raylib import KEY_S
 from gamedata.datatypes.color import Color
 #----------------------------------------
 #GAME CONSTANTS
@@ -47,6 +48,16 @@ BULLET_HEIGHT = 1
 #IMAGES
 
 #KEYBINDS
+LEFT = "left"
+RIGHT = "right"
+UP = "up"
+DOWN = "down"
+SPACE = "space"
+KEY_W = "w"
+KEY_A = "a"
+KEY_S = "s"
+KEY_D = "d"
+
 
 #ENTITY GROUPS
 PLAYER = "player"

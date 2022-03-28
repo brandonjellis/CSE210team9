@@ -12,7 +12,7 @@ from gamedata.scripting.GameMasterCallback import Callback
 from gamedata.scripting.border_collision import BorderCollision
 #from gamedata.scripting.control_player_action import 
 from gamedata.scripting.initialize_handlers import InitializeDevicesAction
-
+from gamedata.scripting.control_player_action import ControlPlayer
 
 class RealityMaster:
     """
@@ -27,11 +27,25 @@ class RealityMaster:
     def change_script(self,gamestate,entlist,script):
         if gamestate == "level1":
             self._build_lv1(entlist,script)
+        elif gamestate == "level2":
+            self._build_lv2(entlist, script)
+        elif gamestate == "level3":
+            self._build_lv3(entlist, script)
+        elif gamestate == "init":
+            self._build_init(entlist, script)
 
     #SCENE BUILDER METHODS
+
+    def _build_init(self,entlist,script):
+        pass
+
     def _build_lv1(self,entlist,script):
         pass
         #entities
+        self._create_player(entlist)
+        #script
+        self._input_script(script)
+
 
 
     def _build_lv2():
@@ -54,3 +68,18 @@ class RealityMaster:
         player.set_animation(player_animation)
 
     #SCRIPT METHODS
+    def _input_script(self, script):
+        script.clear_actions(INPUT)
+        script.add_action(INPUT, ControlPlayer(self._ks))
+        script.add_action()
+
+    def _update_script(self, script):
+        pass
+    
+    def _output_script(self, script):
+        pass
+
+    def _initialize_script(self, script):
+        pass
+
+    #LEVEL DATA METHODS
