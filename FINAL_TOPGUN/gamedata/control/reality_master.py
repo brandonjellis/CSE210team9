@@ -74,9 +74,12 @@ class RealityMaster:
         script.add_action()
 
     def _update_script(self, script):
+        script.clear_actions(UPDATE)
+        script.add_action(UPDATE, BorderCollision(self._ps))
         pass
     
     def _output_script(self, script):
+        script.clear_actions(OUTPUT)
         pass
 
     def _initialize_script(self, script):
