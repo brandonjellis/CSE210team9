@@ -1,4 +1,4 @@
-from FINAL_TOPGUN.constants import BULLET_PLAYER_GROUP
+from constants import *
 from gamedata.scripting.action import Action
 
 class BulletOffscreen(Action):
