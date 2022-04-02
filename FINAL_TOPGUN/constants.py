@@ -44,6 +44,17 @@ BULLET_WIDTH = 1
 BULLET_HEIGHT = 1
 
 #SOUND
+BACKGROUND1_SOUND = "assets/sounds/background1.wav"
+BACKGROUND2_SOUND = "assets/sounds/background2.wav"
+BACKGROUND3_SOUND = "assets/sounds/background3.wav"
+BONUS1_SOUND = "assets/sounds/bonus1.wav"
+BONUS2_SOUND = "assets/sounds/bonus2.wav"
+EXPLOSION_SOUND = "assets/sounds/explosion.wav"
+FINAL_SCORE_SOUND = "assets/sounds/final_score.wav"
+GAME_OVER_SOUND = "assets/sounds/game_over.wav"
+LASER_SHOT1_SOUND = "assets/sounds/laser_shot_1.wav"
+LASER_SHOT2_SOUND = "assets/sounds/laser_shot_2.wav"
+SPACESHOOTER_DEAD_SOUND = "assets/sounds/space_shooter_dead.wav"
 
 #IMAGES
 
