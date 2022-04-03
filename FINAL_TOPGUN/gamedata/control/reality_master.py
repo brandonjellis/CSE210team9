@@ -64,7 +64,7 @@ class RealityMaster:
         start_vel = Point(0,0)
         ent_size = Point(PLAYER_WIDTH,PLAYER_HEIGHT)
         player = Player(start_pos,start_vel,ent_size)
-        player_animation = Animation(images = PLAYER_IMAGES)
+        player_animation = Animation(images = PLAYER_IMAGE)
         player.set_animation(player_animation)
 
     #SCRIPT METHODS

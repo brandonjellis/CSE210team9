@@ -68,8 +68,12 @@ LASER_SHOT1_SOUND = "assets/sounds/laser_shot_1.wav"
 LASER_SHOT2_SOUND = "assets/sounds/laser_shot_2.wav"
 SPACESHOOTER_DEAD_SOUND = "assets/sounds/space_shooter_dead.wav"
 
-#IMAGES
+#EXPLOSION
 EXPLOSION_IMAGES = {f"assets/images/explosion{i:01}.png" for i in range(1,7)}
+EXPLOSION_SIZE = 28
+EXPLOSION_DELAY = 0.5
+EXPLOSION_GROUP = "explosion"
+
 
 #KEYBINDS
 LEFT = "left"
