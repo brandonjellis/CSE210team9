@@ -8,11 +8,28 @@ from gamedata.entities.player import Player
 from gamedata.entities.bullet import Bullet
 from gamedata.entities.enemy import Enemy
 
-from gamedata.scripting.GameMasterCallback import Callback
 from gamedata.scripting.border_collision import BorderCollision
-#from gamedata.scripting.control_player_action import 
-from gamedata.scripting.initialize_handlers import InitializeDevicesAction
+from gamedata.scripting.bullet_offscreen import BulletOffscreen
 from gamedata.scripting.control_player_action import ControlPlayer
+from gamedata.scripting.draw_enemies import DrawEnemies
+from gamedata.scripting.draw_enemy_bullets import DrawEnemyBullets
+from gamedata.scripting.draw_player import DrawPlayer
+from gamedata.scripting.draw_player_bullets import DrawPlayerBullets
+from gamedata.scripting.draw_explosionS import DrawExplosions
+from gamedata.scripting.end_drawing_action import EndDrawingAction
+from gamedata.scripting.enemy_collisions import EnemyCollisions
+from gamedata.scripting.GameMasterCallback import Callback
+from gamedata.scripting.initialize_handlers import InitializeDevicesAction
+from gamedata.scripting.load_assets_action import LoadAssetsAction
+from gamedata.scripting.player_bullets import PlayerBullets
+from gamedata.scripting.player_collisions import PlayerCollisions
+from gamedata.scripting.release_devices_action import ReleaseDevicesAction
+from gamedata.scripting.spawn_enemy import SpawnEnemy
+from gamedata.scripting.start_drawing_action import StartDrawingAction
+from gamedata.scripting.SwitchSceneAction import SwitchScreen
+from gamedata.scripting.update_enemies import UpdateEnemies
+from gamedata.scripting.update_explosions import UpdateExplosions
+
 
 class RealityMaster:
     """
