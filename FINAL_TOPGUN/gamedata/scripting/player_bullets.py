@@ -22,7 +22,7 @@ class PlayerBullets(Action):
         new_bullet.set_position(bullet_position)
         new_bullet.set_velocity(bullet_velocity)
         new_bullet.set_size(bullet_size)
-        new_bullet.set_animation(images = BULLET_IMAGE)
+        new_bullet.set_animation(images = PLAYER_BULLET_IMAGE)
 
         bullet = entities.add_entity(BULLET_PLAYER_GROUP, new_bullet)
         

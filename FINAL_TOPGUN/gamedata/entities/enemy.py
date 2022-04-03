@@ -1,5 +1,6 @@
 from time import time
 from constants import *
+import math
 
 from gamedata.entities.entity import Entity
 from gamedata.datatypes.point import Point
@@ -32,14 +33,42 @@ class Enemy(Entity):
         pass
     pass
 
-class Type1:
-    pass
+class Type1(Enemy):
+    def __init__(self, pos, vel, size):
+        super().__init__(pos, vel, size)
 
-class Type2:
-    pass
+    def _xmove(self, dt):
+        return round(CONSTANT_FUNCTION*math.log10(dt))
 
-class Type3:
-    pass
+    def _ymove(self, dt):
+        return self._position.get_y()
 
-class TypeBoss:
-    pass
+class Type2(Enemy):
+    def __init__(self, pos, vel, size):
+        super().__init__(pos, vel, size)
+
+    def _xmove(self, dt):
+        return round(CONSTANT_FUNCTION*math.cos(dt))
+
+    def _ymove(self, dt):
+        return round(CONSTANT_FUNCTION*math.sin(dt) + 100)
+
+class Type3(Enemy):
+    def __init__(self, pos, vel, size):
+        super().__init__(pos, vel, size)
+
+    def _xmove(self, dt):
+        return round(CONSTANT_FUNCTION*math.sin(2*dt))
+
+    def _ymove(self, dt):
+        return round(CONSTANT_FUNCTION*math.sin(dt) + 100)
+
+class TypeBoss(Enemy):
+    def __init__(self, pos, vel, size):
+        super().__init__(pos, vel, size)
+
+    def _xmove(self, dt):
+        return round((CONSTANT_FUNCTION*4)*math.sin(0.01*dt))
+
+    def _ymove(self, dt):
+        return round((CONSTANT_FUNCTION/2)*math.log10(dt+1))
