@@ -6,4 +6,5 @@ class Bullet(Entity):
         super().__init__(position, velocity, size)
         self._damage = 10
 
-
+    def get_damage(self):
+        return self._damage
