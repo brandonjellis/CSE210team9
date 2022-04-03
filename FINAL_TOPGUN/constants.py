@@ -30,16 +30,28 @@ WHITE = Color(255,255,255)
 
 # PLAYER
 PLAYER_GROUP = "player"
-PLAYER_IMAGES = None
+PLAYER_IMAGE = "assets/images/player.png"
+PLAYER_BULLET_IMAGE = "assets/images/player_bullet.png"
 PLAYER_WIDTH = 28
 PLAYER_HEIGHT = 28
 PLAYER_VELOCITY = 6
+
+# ENEMY
+ENEMY_IMAGE1 = "assets/images/enemy1.png"
+ENEMY_IMAGE2 = "assets/images/enemy2.png"
+ENEMY_IMAGE3 = "assets/images/enemy3.png"
+ENEMY_IMAGE4 = "assets/images/enemy4.png"
+ENEMY_IMAGE5 = "assets/images/enemy5.png"
+ENEMY_IMAGE6 = "assets/images/enemy6.png"
 
 # BULLET
 BULLET_ENEMY_GROUP = "e_bullet"
 BULLET_PLAYER_GROUP = "p_bullet"
 BULLET_VELOCITY = 6
-BULLET_IMAGE = " "
+BULLET_IMAGE1 = "assets/images/enemy_bullet1.png"
+BULLET_IMAGE2 = "assets/images/enemy_bullet2.png"
+BULLET_IMAGE3 = "assets/images/enemy_bullet3.png"
+BULLET_IMAGE4 = "assets/images/enemy_bullet4.png"
 BULLET_WIDTH = 1
 BULLET_HEIGHT = 1
 
@@ -57,6 +69,7 @@ LASER_SHOT2_SOUND = "assets/sounds/laser_shot_2.wav"
 SPACESHOOTER_DEAD_SOUND = "assets/sounds/space_shooter_dead.wav"
 
 #IMAGES
+EXPLOSION_IMAGES = {f"assets/images/explosion{i:01}.png" for i in range(1,7)}
 
 #KEYBINDS
 LEFT = "left"
