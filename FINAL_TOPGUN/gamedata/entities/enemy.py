@@ -1,4 +1,5 @@
 from time import time
+from FINAL_TOPGUN.gamedata.entities.bullet import Bullet
 from constants import *
 import math
 
@@ -31,6 +32,13 @@ class Enemy(Entity):
 
     def fire(self,entlist):
         pass
+
+    def take_damage(self, damage):
+        self._life -= damage  
+
+    def get_life(self):
+        return self._life
+
     pass
 
 class Type1(Enemy):
@@ -43,6 +51,35 @@ class Type1(Enemy):
     def _ymove(self, dt):
         return self._position.get_y()
 
+    def fire(self, entlist):
+        player = entlist.get_first_entity(PLAYER_GROUP)
+        player_position = player.get_position()
+        x2 = player_position.get_x()
+        y2 = player_position.get_y()
+
+        enemy = entlist.get_first_entity(ENEMY_GROUP)
+        enemy_position = enemy.get_position()
+        x1 = enemy_position.get_x()
+        y1 = enemy_position.get_y()
+
+        x = x1 + ENEMY_WIDTH/2
+        y = y1 + ENEMY_HEIGHT
+
+        magnitude = math.sqrt((x2-x1)**2 + (y2-y1)**2)
+        unit_vector = Point((x2-x1)/magnitude,(y2-y2)/magnitude)
+        velocity = BULLET_VELOCITY * unit_vector
+
+        bullet_position = Point(x,y)
+        bullet_size = Point(BULLET_WIDTH,BULLET_HEIGHT)
+        bullet_velocity = velocity
+
+        new_bullet = Bullet()
+        new_bullet.set_position(bullet_position)
+        new_bullet.set_velocity(bullet_velocity)
+        new_bullet.set_size(bullet_size)
+        new_bullet.set_animation(images = BULLET_IMAGE1)
+
+
 class Type2(Enemy):
     def __init__(self, pos, vel, size):
         super().__init__(pos, vel, size)
@@ -52,6 +89,24 @@ class Type2(Enemy):
 
     def _ymove(self, dt):
         return round(CONSTANT_FUNCTION*math.sin(dt) + 100)
+
+    def fire(self, entlist):
+        enemy = entlist.get_first_entity(ENEMY_GROUP)
+        enemy_position = enemy.get_position()
+        x = enemy_position.get_x() + ENEMY_WIDTH/2
+        y = enemy_position.get_y() + ENEMY_HEIGHT
+
+
+
+        bullet_position = Point(x,y)
+        bullet_size = Point(BULLET_WIDTH,BULLET_HEIGHT)
+        bullet_velocity = ""
+
+        new_bullet = Bullet()
+        new_bullet.set_position(bullet_position)
+        new_bullet.set_velocity(bullet_velocity)
+        new_bullet.set_size(bullet_size)
+        new_bullet.set_animation(images = BULLET_IMAGE1)
 
 class Type3(Enemy):
     def __init__(self, pos, vel, size):
@@ -72,3 +127,38 @@ class TypeBoss(Enemy):
 
     def _ymove(self, dt):
         return round((CONSTANT_FUNCTION/2)*math.log10(dt+1))
+
+    def _ymove(self, dt):
+        return self._position.get_y()
+
+    def fire(self, entlist):
+        player = entlist.get_first_entity(PLAYER_GROUP)
+        player_position = player.get_position()
+        x2 = player_position.get_x()
+        y2 = player_position.get_y()
+
+        enemy = entlist.get_first_entity(ENEMY_GROUP)
+        enemy_position = enemy.get_position()
+        x1 = enemy_position.get_x()
+        y1 = enemy_position.get_y()
+
+        x = x1 + ENEMY_WIDTH/2
+        y = y1 + ENEMY_HEIGHT
+
+        magnitude = math.sqrt((x2-x1)**2 + (y2-y1)**2)
+        unit_vector = Point((x2-x1)/magnitude,(y2-y2)/magnitude)
+        velocity = BULLET_VELOCITY * unit_vector
+
+        bullet_position = Point(x,y)
+        bullet_size = Point(BULLET_WIDTH,BULLET_HEIGHT)
+        bullet_velocity = velocity
+
+        new_bullet = Bullet()
+        new_bullet.set_position(bullet_position)
+        new_bullet.set_velocity(bullet_velocity)
+        new_bullet.set_size(bullet_size)
+        new_bullet.set_animation(images = BULLET_IMAGE1)
+
+    
+
+    

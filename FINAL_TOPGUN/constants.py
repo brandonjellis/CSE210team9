@@ -38,6 +38,9 @@ PLAYER_HEIGHT = 28
 PLAYER_VELOCITY = 6
 
 # ENEMY
+ENEMY_WIDTH = 28
+ENEMY_HEIGHT = 28
+ENEMY_VELOCITY = 6
 ENEMY_IMAGE1 = "assets/images/enemy1.png"
 ENEMY_IMAGE2 = "assets/images/enemy2.png"
 ENEMY_IMAGE3 = "assets/images/enemy3.png"
