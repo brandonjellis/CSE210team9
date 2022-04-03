@@ -86,3 +86,11 @@ class RealityMaster:
         pass
 
     #LEVEL DATA METHODS
+    def read_level_data(self, level_file):
+        data = []
+        with open(level_file) as file:
+            next(file)
+            for line in file:
+                data.append(line)
+        return data
+
