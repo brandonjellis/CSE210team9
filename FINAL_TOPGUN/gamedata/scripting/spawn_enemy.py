@@ -1,7 +1,8 @@
-
+from constants import *
+from gamedata.datatypes.point import Point
 from gamedata.scripting.action import Action
-import csv
-import time
+from gamedata.entities.enemy import Type1,Type2,Type3,TypeBoss
+from time import time
 
 class SpawnEnemy(Action):
     """
@@ -9,8 +10,30 @@ class SpawnEnemy(Action):
     at the specified time and location
     """
     def __init__(self, levelfile):
-        pass
+        self._data = levelfile
+        self._start = time()
 
 
     def execute(self, entities, script, callback):
-        pass
+        current = time()
+        dt = current - self._start
+        for line in self._data:
+            t = line[0]
+            if dt == t:
+                new_enemy = None
+                pos = Point(line[1],-10)
+                enemy_type = line[2]
+
+                if enemy_type == 1:
+                    new_enemy = Type1(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
+                elif enemy_type == 2:
+                    new_enemy = Type2(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
+                elif enemy_type == 3:
+                    new_enemy = Type3(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
+                elif enemy_type == 4:
+                    new_enemy = TypeBoss(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
+                    
+                if new_enemy != None:
+                    entities.add_entity(ENEMY_GROUP, new_enemy)
+
+
