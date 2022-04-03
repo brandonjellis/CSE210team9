@@ -1,5 +1,5 @@
 from time import time
-from FINAL_TOPGUN.gamedata.entities.bullet import Bullet
+from gamedata.entities.bullet import Bullet
 from constants import *
 import math
 
@@ -11,7 +11,7 @@ class Enemy(Entity):
     base enemy class template used for other enemy types
     """
     def __init__(self,pos,vel,size):
-        super.__init__(pos,vel,size)
+        super().__init__(pos,vel,size)
         self._life = 10
         self._lifetime = time()
         self._fire_delay = 10
