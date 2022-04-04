@@ -2,17 +2,20 @@
 contains a list of constants to be used by the entire program
 if a piece of data does not change, put it here!
 """
-from raylib import KEY_S
 from gamedata.datatypes.color import Color
 from gamedata.datatypes.image import Image
 from gamedata.datatypes.sound import Sound
+import os
 #----------------------------------------
 #GAME CONSTANTS
 #----------------------------------------
 
+PATH = "C:\\Programming\\git\\CSE210team9\\"
+
 # WINDOW
 WINDOW_NAME = ""
 FRAME_RATE = 60
+
 
 # SCREEN
 SCREEN_WIDTH = 900
@@ -115,5 +118,5 @@ BACKGROUND_GROUP = "background"
 INPUT = "input"
 UPDATE = "update"
 OUTPUT = "output"
-INITIALIZE = "initialize"
+INITIALIZE = "init"
 

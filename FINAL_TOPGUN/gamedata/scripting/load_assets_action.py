@@ -1,5 +1,5 @@
 from gamedata.scripting.action import Action
-
+from constants import *
 
 class LoadAssetsAction(Action):
 
@@ -8,7 +8,7 @@ class LoadAssetsAction(Action):
         self._video_service = video_service
 
     def execute(self, cast, script, callback):
-        self._audio_service.load_sounds("FINAL_TOPGUN/assets/sounds")
-        self._video_service.load_fonts("FINAL_TOPGUN/assets/fonts")
-        self._video_service.load_images("FINAL_TOPGUN/assets/images")
+        self._audio_service.load_sounds(PATH + "FINAL_TOPGUN/assets/sounds")
+        self._video_service.load_fonts(PATH + "FINAL_TOPGUN/assets/fonts")
+        self._video_service.load_images(PATH + "FINAL_TOPGUN/assets/images")
         

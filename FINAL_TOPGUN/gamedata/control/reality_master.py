@@ -49,7 +49,7 @@ class RealityMaster:
             self._build_lv2(entlist, script)
         elif gamestate == "level3":
             self._build_lv3(entlist, script)
-        elif gamestate == "init":
+        elif gamestate == INITIALIZE:
             self._build_init(entlist, script)
 
     #SCENE BUILDER METHODS

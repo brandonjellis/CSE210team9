@@ -1,5 +1,5 @@
 
 
 class Callback:
-    def next_state(self):
+    def next_scene(self):
         raise NotImplementedError("Callback not implemented")
