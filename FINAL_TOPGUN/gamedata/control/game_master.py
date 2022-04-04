@@ -20,20 +20,20 @@ class GameMaster(Callback):
     in charge of generating entities associated with each scene.
     """
     def __init__(self):
-        self._vs = VideoHandler()
+        self._vs = VideoHandler(WINDOW_NAME, SCREEN_WIDTH, SCREEN_HEIGHT)
         self._ks = KeyboardHandler()
         self._ps = PhysicsHandler()
         self._as = AudioHandler()
 
         self._entlist = EntityMaster()
-        self._builder = RealityMaster()
+        self._builder = RealityMaster(self._vs, self._ks, self._ps, self._as)
         self._script = Script()
 
     def next_state(self, scene):
         self._builder.change_script(scene, self._entlist, self._script)
 
     def start(self):
-        self._builder.change_script(INITIALIZE)
+        self._builder.change_script(INITIALIZE,self._entlist, self._script)
         self._execute_script(INITIALIZE)
         while self._vs.is_window_open():
             self._execute_script(INPUT)

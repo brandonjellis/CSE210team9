@@ -31,6 +31,16 @@ FIELD_RIGHT = SCREEN_WIDTH
 BLACK = Color(0,0,0)
 WHITE = Color(255,255,255)
 
+#TEXT
+ALIGN_CENTER = 0
+ALIGN_LEFT = 1
+ALIGN_RIGHT = 2
+
+# FONT
+FONT_FILE = "FINAL_TOPGUN/assets/fonts/zorque.otf"
+FONT_SMALL = 32
+FONT_LARGE = 48
+
 # PLAYER
 PLAYER_GROUP = "player"
 PLAYER_IMAGE = Image("assets/images/player.png")
@@ -106,3 +116,4 @@ INPUT = "input"
 UPDATE = "update"
 OUTPUT = "output"
 INITIALIZE = "initialize"
+
