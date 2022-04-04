@@ -20,3 +20,4 @@ class EnemyCollisions(Action):
                         pos = enemy.get_position
                         entities.remove_entitiy(ENEMY_GROUP, enemy)
                         entities.add_entity(EXPLOSION_GROUP, Explosion(pos))
+                        self._as.play_sound(EXPLOSION_SOUND)

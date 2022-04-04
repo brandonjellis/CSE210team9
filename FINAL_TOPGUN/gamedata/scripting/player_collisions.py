@@ -4,8 +4,9 @@ from gamedata.scripting.action import Action
 
 
 class PlayerCollisions(Action):
-    def __init__(self,physics):
+    def __init__(self,physics, audio_service):
         self._ps = physics
+        self._as = audio_service
 
     def execute(self, entities, script, callback):
         player = entities.get_first_entitiy(PLAYER_GROUP)
@@ -18,3 +19,5 @@ class PlayerCollisions(Action):
                     pos = player.get_position
                     entities.remove_entity(BULLET_ENEMY_GROUP, i)
                     entities.add_entity(EXPLOSION_GROUP, Explosion(pos))
+                    self._as.play_sound(EXPLOSION_SOUND)
+

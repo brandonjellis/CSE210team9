@@ -31,6 +31,7 @@ class PlayerBullets(Action):
             new_bullet.set_animation(images = PLAYER_BULLET_IMAGE)
 
             bullet = entities.add_entity(BULLET_PLAYER_GROUP, new_bullet)
+            self._as.play_sound(LASER_SHOT1_SOUND)
         
 
         
