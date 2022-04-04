@@ -88,18 +88,36 @@ class RealityMaster:
     def _input_script(self, script):
         script.clear_actions(INPUT)
         script.add_action(INPUT, ControlPlayer(self._ks))
-        script.add_action()
+        script.add_action(INPUT, PlayerBullets(self._ks))
 
-    def _update_script(self, script):
+    def _update_script(self, script, level):
         script.clear_actions(UPDATE)
+        script.add_action(UPDATE, UpdateEnemies(self._ps))
+        script.add_action(UPDATE, UpdateExplosions(self._ps))
         script.add_action(UPDATE, BorderCollision(self._ps))
+        script.add_action(UPDATE, BulletOffscreen(self._ps))
+        script.add_action(UPDATE, EnemyCollisions(self._ps))
+        script.add_action(UPDATE, PlayerCollisions(self._ps))
+        script.add_action(UPDATE, SpawnEnemy(level))
         pass
     
     def _output_script(self, script):
         script.clear_actions(OUTPUT)
+        script.add_action(OUTPUT, StartDrawingAction(self._vs))
+        script.add_action(OUTPUT, DrawEnemies(self._vs))
+        script.add_action(OUTPUT, DrawEnemyBullets(self._vs))
+        script.add_action(OUTPUT, DrawExplosions(self._vs))
+        script.add_action(OUTPUT, DrawPlayerBullets(self._vs))
+        script.add_action(OUTPUT, DrawPlayer(self._vs))
+        script.add_action(OUTPUT, EndDrawingAction(self._vs))
+        
         pass
 
     def _initialize_script(self, script):
+        script.clear_actions(INITIALIZE)
+        script.add_action(INITIALIZE, InitializeDevicesAction(self._as,self._vs))
+        script.add_action(INITIALIZE, LoadAssetsAction(self._as,self._vs))
+        script.add_action(INITIALIZE, ReleaseDevicesAction(self._as,self._vs))
         pass
 
     #LEVEL DATA METHODS
