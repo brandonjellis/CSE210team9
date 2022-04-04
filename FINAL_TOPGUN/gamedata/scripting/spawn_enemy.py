@@ -9,9 +9,11 @@ class SpawnEnemy(Action):
     Reads data from level file and spawns enemies
     at the specified time and location
     """
-    def __init__(self, levelfile):
+    def __init__(self, levelfile, next):
         self._data = levelfile
         self._start = time()
+        self._next = next
+        
 
 
     def execute(self, entities, script, callback):
@@ -32,6 +34,8 @@ class SpawnEnemy(Action):
                     new_enemy = Type3(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
                 elif enemy_type == 4:
                     new_enemy = TypeBoss(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
+                elif enemy_type == 5:
+                    callback.next_state(self._next)
                     
                 if new_enemy != None:
                     entities.add_entity(ENEMY_GROUP, new_enemy)

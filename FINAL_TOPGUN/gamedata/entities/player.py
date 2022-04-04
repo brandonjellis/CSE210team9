@@ -19,3 +19,6 @@ class Player(Entity):
         self._lives -= 1
         self._invincible = True
         self._invi_time = time()
+
+    def get_life(self):
+        return self._lives

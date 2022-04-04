@@ -26,7 +26,7 @@ class GameMaster(Callback):
         self._builder = RealityMaster()
 
     def next_state(self):
-        return super().next_state()
+        self._builder.change_script()
 
     def start(self):
         pass
