@@ -80,6 +80,8 @@ EXPLOSION_SIZE = 28
 EXPLOSION_DELAY = 0.5
 EXPLOSION_GROUP = "explosion"
 
+#LEVELS
+LEVEL1 = f"assets/levels/lv1.txt"
 
 #KEYBINDS
 LEFT = "left"

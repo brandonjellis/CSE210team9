@@ -29,6 +29,7 @@ from gamedata.scripting.start_drawing_action import StartDrawingAction
 from gamedata.scripting.SwitchSceneAction import SwitchScreen
 from gamedata.scripting.update_enemies import UpdateEnemies
 from gamedata.scripting.update_explosions import UpdateExplosions
+from gamedata.scripting.check_finished import CheckFinished
 
 
 class RealityMaster:
@@ -54,14 +55,17 @@ class RealityMaster:
     #SCENE BUILDER METHODS
 
     def _build_init(self,entlist,script):
-        pass
+        self._initialize_script(script)
 
     def _build_lv1(self,entlist,script):
         pass
         #entities
         self._create_player(entlist)
         #script
+        level = self._read_level_data(LEVEL1)
         self._input_script(script)
+        self._update_script(script, "level1")
+        self._output_script(script)
 
 
 
@@ -90,7 +94,7 @@ class RealityMaster:
         script.add_action(INPUT, ControlPlayer(self._ks))
         script.add_action(INPUT, PlayerBullets(self._ks))
 
-    def _update_script(self, script, level):
+    def _update_script(self, script, level, next):
         script.clear_actions(UPDATE)
         script.add_action(UPDATE, UpdateEnemies(self._ps))
         script.add_action(UPDATE, UpdateExplosions(self._ps))
@@ -98,7 +102,8 @@ class RealityMaster:
         script.add_action(UPDATE, BulletOffscreen(self._ps))
         script.add_action(UPDATE, EnemyCollisions(self._ps))
         script.add_action(UPDATE, PlayerCollisions(self._ps))
-        script.add_action(UPDATE, SpawnEnemy(level))
+        script.add_action(UPDATE, SpawnEnemy(level,next))
+        script.add_action(UPDATE, CheckFinished(next))
         pass
     
     def _output_script(self, script):
@@ -117,11 +122,11 @@ class RealityMaster:
         script.clear_actions(INITIALIZE)
         script.add_action(INITIALIZE, InitializeDevicesAction(self._as,self._vs))
         script.add_action(INITIALIZE, LoadAssetsAction(self._as,self._vs))
-        script.add_action(INITIALIZE, ReleaseDevicesAction(self._as,self._vs))
+        script.add_action(INITIALIZE, SwitchScreen(LEVEL1))
         pass
 
     #LEVEL DATA METHODS
-    def read_level_data(self, level_file):
+    def _read_level_data(self, level_file):
         data = []
         with open(level_file) as file:
             next(file)

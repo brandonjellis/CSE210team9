@@ -1,4 +1,5 @@
 
+from constants import *
 from gamedata.scripting.GameMasterCallback import Callback
 from gamedata.services.video_handler import VideoHandler
 from gamedata.services.keyboard_handler import KeyboardHandler
@@ -7,6 +8,8 @@ from gamedata.services.audio_handler import AudioHandler
 
 from gamedata.control.entity_master import EntityMaster
 from gamedata.control.reality_master import RealityMaster
+
+from gamedata.scripting.script import Script
 
 class GameMaster(Callback):
     """
@@ -24,12 +27,20 @@ class GameMaster(Callback):
 
         self._entlist = EntityMaster()
         self._builder = RealityMaster()
+        self._script = Script()
 
-    def next_state(self):
-        self._builder.change_script()
+    def next_state(self, scene):
+        self._builder.change_script(scene, self._entlist, self._script)
 
     def start(self):
-        pass
+        self._builder.change_script(INITIALIZE)
+        self._execute_script(INITIALIZE)
+        while self._vs.is_window_open():
+            self._execute_script(INPUT)
+            self._execute_script(UPDATE)
+            self._execute_script(OUTPUT)
 
-    def _execute_script(self):
-        pass
+    def _execute_script(self,group):
+        actions = self._script.get_actions(group)
+        for action in actions:
+            action.execute(self._entlist, self._script, self)
