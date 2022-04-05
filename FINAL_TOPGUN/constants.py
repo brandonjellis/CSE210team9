@@ -40,15 +40,15 @@ ALIGN_LEFT = 1
 ALIGN_RIGHT = 2
 
 # FONT
-FONT_FILE = "FINAL_TOPGUN/assets/fonts/zorque.otf"
+FONT_FILE = "FINAL_TOPGUN\\assets\\fonts\\zorque.otf"
 FONT_SMALL = 32
 FONT_LARGE = 48
 
 
 # PLAYER
 PLAYER_GROUP = "player"
-PLAYER_IMAGE = Image("assets/images/player.png")
-PLAYER_BULLET_IMAGE = Image("assets/images/player_bullet.png")
+PLAYER_IMAGE = Image("assets\\images\\player.png",0.20)
+PLAYER_BULLET_IMAGE = Image("assets\\images\\player_bullet.png")
 PLAYER_WIDTH = 28
 PLAYER_HEIGHT = 28
 PLAYER_VELOCITY = 6
@@ -57,48 +57,48 @@ PLAYER_VELOCITY = 6
 ENEMY_WIDTH = 28
 ENEMY_HEIGHT = 28
 ENEMY_VELOCITY = 6
-ENEMY_IMAGE1 = Image("assets/images/enemy1.png")
-ENEMY_IMAGE2 = Image("assets/images/enemy2.png")
-ENEMY_IMAGE3 = Image("assets/images/enemy3.png")
-ENEMY_IMAGE4 = Image("assets/images/enemy4.png")
-ENEMY_IMAGE5 = Image("assets/images/enemy5.png")
-ENEMY_IMAGE6 = Image("assets/images/enemy6.png")
+ENEMY_IMAGE1 = Image("assets\\images\\enemy1.png")
+ENEMY_IMAGE2 = Image("assets\\images\\enemy2.png")
+ENEMY_IMAGE3 = Image("assets\\images\\enemy3.png")
+ENEMY_IMAGE4 = Image("assets\\images\\enemy4.png")
+ENEMY_IMAGE5 = Image("assets\\images\\enemy5.png")
+ENEMY_IMAGE6 = Image("assets\\images\\enemy6.png")
 
 # BULLET
 BULLET_ENEMY_GROUP = "e_bullet"
 BULLET_PLAYER_GROUP = "p_bullet"
 BULLET_VELOCITY = 6
-BULLET_IMAGE1 = Image("assets/images/enemy_bullet1.png")
-BULLET_IMAGE2 = Image("assets/images/enemy_bullet2.png")
-BULLET_IMAGE3 = Image("assets/images/enemy_bullet3.png")
-BULLET_IMAGE4 = Image("assets/images/enemy_bullet4.png")
+BULLET_IMAGE1 = Image("assets\\images\\enemy_bullet1.png")
+BULLET_IMAGE2 = Image("assets\\images\\enemy_bullet2.png")
+BULLET_IMAGE3 = Image("assets\\images\\enemy_bullet3.png")
+BULLET_IMAGE4 = Image("assets\\images\\enemy_bullet4.png")
 BULLET_WIDTH = 1
 BULLET_HEIGHT = 1
 
 #SOUND
-BACKGROUND1_SOUND = Sound("assets/sounds/background1.wav")
-BACKGROUND2_SOUND = Sound("assets/sounds/background2.wav")
-BACKGROUND3_SOUND = Sound("assets/sounds/background3.wav")
-BONUS1_SOUND = Sound("assets/sounds/bonus1.wav")
-BONUS2_SOUND = Sound("assets/sounds/bonus2.wav")
-EXPLOSION_SOUND = Sound("assets/sounds/explosion.wav")
-FINAL_SCORE_SOUND = Sound("assets/sounds/final_score.wav")
-GAME_OVER_SOUND = Sound("assets/sounds/game_over.wav")
-LASER_SHOT1_SOUND = Sound("assets/sounds/laser_shot_1.wav")
-LASER_SHOT2_SOUND = Sound("assets/sounds/laser_shot_2.wav")
-SPACESHOOTER_DEAD_SOUND = Sound("assets/sounds/space_shooter_dead.wav")
+BACKGROUND1_SOUND = Sound("assets\\sounds\\background1.wav")
+BACKGROUND2_SOUND = Sound("assets\\sounds\\background2.wav")
+BACKGROUND3_SOUND = Sound("assets\\sounds\\background3.wav")
+BONUS1_SOUND = Sound("assets\\sounds\\bonus1.wav")
+BONUS2_SOUND = Sound("assets\\sounds\\bonus2.wav")
+EXPLOSION_SOUND = Sound("assets\\sounds\\explosion.wav")
+FINAL_SCORE_SOUND = Sound("assets\\sounds\\final_score.wav")
+GAME_OVER_SOUND = Sound("assets\\sounds\\game_over.wav")
+LASER_SHOT1_SOUND = Sound("assets\\sounds\\laser_shot_1.wav")
+LASER_SHOT2_SOUND = Sound("assets\\sounds\\laser_shot_2.wav")
+SPACESHOOTER_DEAD_SOUND = Sound("assets\\sounds\\space_shooter_dead.wav")
 
 #EXPLOSION
-EXPLOSION_IMAGES = {Image(f"assets/images/explosion{i:01}.png") for i in range(1,7)}
+EXPLOSION_IMAGES = {Image(f"assets\\images\\explosion{i:01}.png") for i in range(1,7)}
 EXPLOSION_SIZE = 28
 EXPLOSION_DELAY = 0.5
 EXPLOSION_GROUP = "explosion"
 
 #OTHER
-DEFAULT_IMAGE = Image("assets/images/default.png")
+DEFAULT_IMAGE = Image("assets\\images\\default.png")
 
 #LEVELS
-LEVEL1 = f"assets/levels/lv1.txt"
+LEVEL1 = f"assets\\levels\\lv1.txt"
 
 #KEYBINDS
 LEFT = "left"

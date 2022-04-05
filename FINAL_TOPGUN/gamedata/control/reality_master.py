@@ -27,7 +27,7 @@ from gamedata.scripting.release_devices_action import ReleaseDevicesAction
 from gamedata.scripting.spawn_enemy import SpawnEnemy
 from gamedata.scripting.start_drawing_action import StartDrawingAction
 from gamedata.scripting.SwitchSceneAction import SwitchScreen
-from gamedata.scripting.update_enemies import UpdateEnemies
+from gamedata.scripting.update_enemies import UpdateEntities
 from gamedata.scripting.update_explosions import UpdateExplosions
 from gamedata.scripting.check_finished import CheckFinished
 
@@ -98,7 +98,7 @@ class RealityMaster:
 
     def _update_script(self, script, level, next):
         script.clear_actions(UPDATE)
-        script.add_action(UPDATE, UpdateEnemies())
+        script.add_action(UPDATE, UpdateEntities())
         script.add_action(UPDATE, UpdateExplosions())
         script.add_action(UPDATE, BorderCollision(self._ps))
         script.add_action(UPDATE, BulletOffscreen())

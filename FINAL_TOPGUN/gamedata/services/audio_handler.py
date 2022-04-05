@@ -1,6 +1,7 @@
 import os
 import pathlib
 import pyray
+from constants import *
 
 class AudioHandler:
     """A Raylib implementation of AudioService."""
@@ -20,7 +21,7 @@ class AudioHandler:
     def play_sound(self, sound):
         filepath = sound.get_filename()
         volume = sound.get_volume()
-        sound = self._sounds[filepath]
+        sound = self._sounds[PATH + "FINAL_TOPGUN\\" + filepath]
         # pyray.set_sound_volume(volume)
         pyray.play_sound(sound)
     

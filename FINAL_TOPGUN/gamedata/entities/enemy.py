@@ -1,5 +1,6 @@
 from time import time
 from gamedata.entities.bullet import Bullet
+from gamedata.datatypes.animation import Animation
 from constants import *
 import math
 
@@ -81,7 +82,7 @@ class Type1(Enemy):
             new_bullet.set_position(bullet_position)
             new_bullet.set_velocity(bullet_velocity)
             new_bullet.set_size(bullet_size)
-            new_bullet.set_animation(images = BULLET_IMAGE1)
+            new_bullet.set_animation(Animation(BULLET_IMAGE1))
             bullet = entlist.add_entity(BULLET_ENEMY_GROUP, new_bullet)
 
 
@@ -114,7 +115,7 @@ class Type2(Enemy):
                 new_bullet.set_position(bullet_position)
                 new_bullet.set_velocity(BULLET_VELOCITY * velocity[i])
                 new_bullet.set_size(bullet_size)
-                new_bullet.set_animation(images = BULLET_IMAGE2)
+                new_bullet.set_animation(Animation(BULLET_IMAGE2))
                 bullet = entlist.add_entity(BULLET_ENEMY_GROUP, new_bullet)
 
 
@@ -159,7 +160,7 @@ class TypeBoss(Enemy):
             new_bullet.set_position(bullet_position)
             new_bullet.set_velocity(BULLET_VELOCITY * velocity[self._current_loop])
             new_bullet.set_size(bullet_size)
-            new_bullet.set_animation(images = BULLET_IMAGE4)
+            new_bullet.set_animation(Animation(BULLET_IMAGE4))
             bullet = entlist.add_entity(BULLET_ENEMY_GROUP, new_bullet)
             self._current_loop += 1
             if self._current_loop == 9:
