@@ -11,25 +11,24 @@ class BorderCollision(Action):
     def execute(self, entities, script, callback):
         player = entities.get_first_entity(PLAYER_GROUP)
         position = player.get_position()
-        current_vel = player.get_velocity()
         x = position.get_x()
         y = position.get_y()
 
         if x < FIELD_LEFT:
-            velocity = Point(0,current_vel.get_y())
-            player.set_velocity(velocity)
+            pos = Point(0,y)
+            player.set_position(pos)
 
-        elif x >= (FIELD_RIGHT - PLAYER_WIDTH):
-            velocity = Point(0,current_vel.get_y())
-            player.set_velocity(velocity)
+        if x > (FIELD_RIGHT - PLAYER_WIDTH):
+            pos = Point(FIELD_RIGHT-PLAYER_WIDTH, y)
+            player.set_position(pos)
 
         if y < FIELD_TOP:
-            velocity = Point(current_vel.get_x(),0)
-            player.set_velocity(velocity)
+            pos = Point(x,0+PLAYER_WIDTH)
+            player.set_position(pos)
 
-        elif y >= (FIELD_BOTTOM - PLAYER_WIDTH):
-            velocity = Point(current_vel.get_x(),0)
-            player.set_velocity(velocity)
+        if y > (FIELD_BOTTOM - PLAYER_WIDTH):
+            pos = Point(x, FIELD_BOTTOM - PLAYER_WIDTH)
+            player.set_position(pos)
 
 
         
