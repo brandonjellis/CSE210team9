@@ -18,7 +18,7 @@ FRAME_RATE = 60
 
 
 # SCREEN
-SCREEN_WIDTH = 900
+SCREEN_WIDTH = 1600
 SCREEN_HEIGHT = 900
 CENTER_X = SCREEN_WIDTH /2
 CENTER_Y = SCREEN_HEIGHT /2
@@ -68,6 +68,7 @@ ENEMY_IMAGE6 = Image("assets\\images\\enemy6.png")
 BULLET_ENEMY_GROUP = "e_bullet"
 BULLET_PLAYER_GROUP = "p_bullet"
 BULLET_VELOCITY = 6
+PLAYER_BULLET_VELOCITY = 12
 BULLET_IMAGE1 = Image("assets\\images\\enemy_bullet1.png")
 BULLET_IMAGE2 = Image("assets\\images\\enemy_bullet2.png")
 BULLET_IMAGE3 = Image("assets\\images\\enemy_bullet3.png")

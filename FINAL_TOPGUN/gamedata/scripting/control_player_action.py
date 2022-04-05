@@ -15,12 +15,12 @@ class ControlPlayer(Action):
         y = 0
         if self._ks.is_key_down(KEY_W):
             y = -PLAYER_VELOCITY
-        elif self._ks.is_key_down(KEY_S):
+        if self._ks.is_key_down(KEY_S):
             y = PLAYER_VELOCITY
         
         if self._ks.is_key_down(KEY_A):
             x = -PLAYER_VELOCITY
-        elif self._ks.is_key_down(KEY_D):
+        if self._ks.is_key_down(KEY_D):
             x = PLAYER_VELOCITY
 
         new_vel = Point(x,y)

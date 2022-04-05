@@ -30,8 +30,8 @@ class Entity:
         return self._animation.get_frame()
 
     def move_next(self):
-        x = (self._position.get_x() + self._velocity.get_x()) % SCREEN_WIDTH
-        y = (self._position.get_x() + self._velocity.get_x()) % SCREEN_HEIGHT 
+        x = (self._position.get_x() + self._velocity.get_x())
+        y = (self._position.get_y() + self._velocity.get_y())
         self._position = Point(x,y)
 
     def set_position(self, position):

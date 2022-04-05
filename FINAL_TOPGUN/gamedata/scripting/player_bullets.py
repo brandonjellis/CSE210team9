@@ -11,13 +11,14 @@ class PlayerBullets(Action):
         super().__init__()
         self._ks = keyboard
         self._as = audio
-        self._delay = 0.5
+        self._delay = 0.125
         self._last_fire = time()
 
     def execute(self, entities, script, callback):
         now = time()
         if now - self._last_fire > self._delay:
             if self._ks.is_key_down(SPACE):
+                self._last_fire = time()
                 player = entities.get_first_entity(PLAYER_GROUP)
                 player_position = player.get_position()
                 x = player_position.get_x() + PLAYER_WIDTH/2
@@ -25,7 +26,7 @@ class PlayerBullets(Action):
     
                 bullet_position = Point(x,y)
                 bullet_size = Point(BULLET_WIDTH,BULLET_HEIGHT)
-                bullet_velocity = Point(0, -BULLET_VELOCITY)
+                bullet_velocity = Point(0, -PLAYER_BULLET_VELOCITY)
     
                 new_bullet = Bullet()
                 new_bullet.set_position(bullet_position)
