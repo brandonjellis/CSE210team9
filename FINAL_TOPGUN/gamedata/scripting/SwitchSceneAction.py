@@ -7,4 +7,4 @@ class SwitchScreen(Action):
     def __init__(self, next):
         self._nextScene = next
     def execute(self, entities, script, callback):
-        callback.next_scene()
+        callback.next_state(self._nextScene)

@@ -7,9 +7,10 @@ class Animation:
     Animation datatype. contains a list of several image datatypes 
     plus several parameters for switching the current frame
     '''
-    def __init__(self, delay = 1, loop = False, images = [Image(None)]):
-        self._images = images
-        self._frame = self._images[0]
+    def __init__(self, images, delay = 1, loop = False):
+        self._images = []
+        self._images.append(images)
+        self._frame = (self._images)[0]
         self._index = 0
         self._delay = delay
         self._loop = loop

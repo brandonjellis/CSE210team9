@@ -9,7 +9,7 @@ class PlayerCollisions(Action):
         self._as = audio_service
 
     def execute(self, entities, script, callback):
-        player = entities.get_first_entitiy(PLAYER_GROUP)
+        player = entities.get_first_entity(PLAYER_GROUP)
         bullets = entities.get_entities(BULLET_ENEMY_GROUP)
 
         for i in bullets:

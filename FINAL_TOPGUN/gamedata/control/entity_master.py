@@ -11,7 +11,7 @@ class EntityMaster():
             self._entities[group] = []
 
         if not entity in self._entities[group]:
-            self._entities[group] = []
+            self._entities[group].append(entity)
 
     def get_entities(self, group):
         results = []
@@ -28,7 +28,7 @@ class EntityMaster():
     def get_first_entity(self, group):
         result = None
         if group in self._entities.keys():
-            result = self._actors[group][0]
+            result = self._entities[group][0]
         return result
 
     def remove_entity(self, group, entity):

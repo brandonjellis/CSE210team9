@@ -36,35 +36,36 @@ class RealityMaster:
     """
     generates the loop script for each state of the game and creates initial entities, returns script to be run to game master. 
     """
-    def __init__(self,video,keyboard,physics,audio):
+    def __init__(self,video,keyboard,physics,audio, entlist):
         self._vs = video
         self._ks = keyboard
         self._ps = physics
         self._as = audio
+        self._entlist = entlist
 
-    def change_script(self,gamestate,entlist,script):
+    def change_script(self,gamestate,script):
         if gamestate == "level1":
-            self._build_lv1(entlist,script)
+            self._build_lv1(script)
         elif gamestate == "level2":
-            self._build_lv2(entlist, script)
+            self._build_lv2(script)
         elif gamestate == "level3":
-            self._build_lv3(entlist, script)
+            self._build_lv3(script)
         elif gamestate == INITIALIZE:
-            self._build_init(entlist, script)
+            self._build_init(script)
 
     #SCENE BUILDER METHODS
 
-    def _build_init(self,entlist,script):
+    def _build_init(self,script):
         self._initialize_script(script)
 
-    def _build_lv1(self,entlist,script):
+    def _build_lv1(self,script):
         pass
         #entities
-        self._create_player(entlist)
+        self._create_player()
         #script
         level = self._read_level_data(LEVEL1)
         self._input_script(script)
-        self._update_script(script, "level1")
+        self._update_script(script, level, "level1")
         self._output_script(script)
 
 
@@ -77,31 +78,32 @@ class RealityMaster:
         pass
 
     #ENTITY METHODS
-    def _create_player(self, entlist):
-        entlist.remove_entities(PLAYER)
+    def _create_player(self):
+        self._entlist.remove_entities(PLAYER)
         x = CENTER_X - PLAYER_WIDTH/2
         y = CENTER_Y - PLAYER_HEIGHT/2
         start_pos = Point(x,y)
         start_vel = Point(0,0)
         ent_size = Point(PLAYER_WIDTH,PLAYER_HEIGHT)
         player = Player(start_pos,start_vel,ent_size)
-        player_animation = Animation(images = PLAYER_IMAGE)
+        player_animation = Animation(PLAYER_IMAGE)
         player.set_animation(player_animation)
+        self._entlist.add_entity(PLAYER_GROUP, player)
 
     #SCRIPT METHODS
     def _input_script(self, script):
         script.clear_actions(INPUT)
         script.add_action(INPUT, ControlPlayer(self._ks))
-        script.add_action(INPUT, PlayerBullets(self._ks))
+        script.add_action(INPUT, PlayerBullets(self._ks, self._as))
 
     def _update_script(self, script, level, next):
         script.clear_actions(UPDATE)
-        script.add_action(UPDATE, UpdateEnemies(self._ps))
-        script.add_action(UPDATE, UpdateExplosions(self._ps))
+        script.add_action(UPDATE, UpdateEnemies())
+        script.add_action(UPDATE, UpdateExplosions())
         script.add_action(UPDATE, BorderCollision(self._ps))
-        script.add_action(UPDATE, BulletOffscreen(self._ps))
+        script.add_action(UPDATE, BulletOffscreen())
         script.add_action(UPDATE, EnemyCollisions(self._ps))
-        script.add_action(UPDATE, PlayerCollisions(self._ps))
+        script.add_action(UPDATE, PlayerCollisions(self._ps, self._as))
         script.add_action(UPDATE, SpawnEnemy(level,next))
         script.add_action(UPDATE, CheckFinished(next))
         pass
@@ -122,7 +124,7 @@ class RealityMaster:
         script.clear_actions(INITIALIZE)
         script.add_action(INITIALIZE, InitializeDevicesAction(self._as,self._vs))
         script.add_action(INITIALIZE, LoadAssetsAction(self._as,self._vs))
-        script.add_action(INITIALIZE, SwitchScreen(LEVEL1))
+        script.add_action(INITIALIZE, SwitchScreen("level1"))
         pass
 
     #LEVEL DATA METHODS

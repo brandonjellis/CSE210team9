@@ -26,14 +26,14 @@ class GameMaster(Callback):
         self._as = AudioHandler()
 
         self._entlist = EntityMaster()
-        self._builder = RealityMaster(self._vs, self._ks, self._ps, self._as)
+        self._builder = RealityMaster(self._vs, self._ks, self._ps, self._as, self._entlist)
         self._script = Script()
 
     def next_state(self, scene):
-        self._builder.change_script(scene, self._entlist, self._script)
+        self._builder.change_script(scene, self._script)
 
     def start(self):
-        self._builder.change_script(INITIALIZE,self._entlist, self._script)
+        self._builder.change_script(INITIALIZE, self._script)
         self._execute_script(INITIALIZE)
         while self._vs.is_window_open():
             self._execute_script(INPUT)

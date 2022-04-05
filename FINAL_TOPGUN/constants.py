@@ -44,6 +44,7 @@ FONT_FILE = "FINAL_TOPGUN/assets/fonts/zorque.otf"
 FONT_SMALL = 32
 FONT_LARGE = 48
 
+
 # PLAYER
 PLAYER_GROUP = "player"
 PLAYER_IMAGE = Image("assets/images/player.png")
@@ -92,6 +93,9 @@ EXPLOSION_IMAGES = {Image(f"assets/images/explosion{i:01}.png") for i in range(1
 EXPLOSION_SIZE = 28
 EXPLOSION_DELAY = 0.5
 EXPLOSION_GROUP = "explosion"
+
+#OTHER
+DEFAULT_IMAGE = Image("assets/images/default.png")
 
 #LEVELS
 LEVEL1 = f"assets/levels/lv1.txt"

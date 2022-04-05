@@ -1,5 +1,5 @@
 
-import constants
+from constants import *
 from gamedata.datatypes.point import Point
 from gamedata.datatypes.animation import Animation
 
@@ -11,7 +11,7 @@ class Entity:
         self._position = position
         self._velocity = velocity
         self._size = size
-        self._animation = Animation()
+        self._animation = Animation(DEFAULT_IMAGE)
 
 
     def get_position(self):
@@ -27,11 +27,11 @@ class Entity:
         return self._animation
 
     def get_image(self):
-        return self._animation.get_image()
+        return self._animation.get_frame()
 
     def move_next(self):
-        x = (self._position.get_x() + self._velocity.get_x()) % constants.MAX_X
-        y = (self._position.get_x() + self._velocity.get_x()) % constants.MAX_Y 
+        x = (self._position.get_x() + self._velocity.get_x()) % SCREEN_WIDTH
+        y = (self._position.get_x() + self._velocity.get_x()) % SCREEN_HEIGHT 
         self._position = Point(x,y)
 
     def set_position(self, position):

@@ -6,9 +6,10 @@ from time import time
 
 
 class PlayerBullets(Action):
-    def __init__(self,keyboard):
+    def __init__(self,keyboard, audio):
         super().__init__()
         self._ks = keyboard
+        self._as = audio
         self._delay = 0.5
         self._last_fire = time()
 
@@ -28,7 +29,7 @@ class PlayerBullets(Action):
             new_bullet.set_position(bullet_position)
             new_bullet.set_velocity(bullet_velocity)
             new_bullet.set_size(bullet_size)
-            new_bullet.set_animation(images = PLAYER_BULLET_IMAGE)
+            new_bullet.set_animation(PLAYER_BULLET_IMAGE)
 
             bullet = entities.add_entity(BULLET_PLAYER_GROUP, new_bullet)
             self._as.play_sound(LASER_SHOT1_SOUND)

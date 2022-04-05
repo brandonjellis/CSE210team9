@@ -1,4 +1,5 @@
 from constants import *
+from gamedata.datatypes.animation import Animation
 from gamedata.datatypes.point import Point
 from gamedata.scripting.action import Action
 from gamedata.entities.enemy import Type1,Type2,Type3,TypeBoss
@@ -28,12 +29,16 @@ class SpawnEnemy(Action):
 
                 if enemy_type == 1:
                     new_enemy = Type1(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
+                    new_enemy.set_animation(Animation([ENEMY_IMAGE3]))
                 elif enemy_type == 2:
                     new_enemy = Type2(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
+                    new_enemy.set_animation(Animation([ENEMY_IMAGE6]))
                 elif enemy_type == 3:
                     new_enemy = Type3(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
+                    new_enemy.set_animation(Animation([ENEMY_IMAGE2]))
                 elif enemy_type == 4:
                     new_enemy = TypeBoss(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
+                    new_enemy.set_animation(Animation([ENEMY_IMAGE1]))
                 elif enemy_type == 5:
                     callback.next_state(self._next)
                     

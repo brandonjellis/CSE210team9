@@ -7,7 +7,7 @@ class DrawPlayer(Action):
         self._video_service = video_service
 
     def execute(self, entities, script, callback):
-        player = entities.get_first_actor(PLAYER_GROUP)
+        player = entities.get_first_entity(PLAYER_GROUP)
 
         image = player.get_image()
         position = player.get_position()

@@ -15,7 +15,7 @@ class ControlPlayer(Action):
         y = 0
         if self._ks.is_key_down(KEY_W):
             y = -PLAYER_VELOCITY
-        elif self.ks.is_key_down(KEY_S):
+        elif self._ks.is_key_down(KEY_S):
             y = PLAYER_VELOCITY
         
         if self._ks.is_key_down(KEY_A):
