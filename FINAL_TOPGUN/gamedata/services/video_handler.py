@@ -25,7 +25,7 @@ class VideoHandler:
 
     def draw_image(self, image, position):
         filepath = image.get_filename()
-        texture = self._textures[PATH +"FINAL_TOPGUN\\"+filepath]
+        texture = self._textures[PATH +"FINAL_TOPGUN\\"+ filepath]
         x = position.get_x()
         y = position.get_y()
         raylib_position = pyray.Vector2(x, y)

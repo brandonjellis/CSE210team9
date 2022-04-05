@@ -19,13 +19,14 @@ class SpawnEnemy(Action):
 
     def execute(self, entities, script, callback):
         current = time()
-        dt = current - self._start
+        dt = float(round(current - self._start)) + 5
         for line in self._data:
-            t = line[0]
+            t = float(line[0] + line[1] + line[2] + line[3])
+
             if dt == t:
                 new_enemy = None
-                pos = Point(line[1],-10)
-                enemy_type = line[2]
+                pos = Point(line[5] + line[6] + line[7],-10)
+                enemy_type = line[9]
 
                 if enemy_type == 1:
                     new_enemy = Type1(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
@@ -44,5 +45,10 @@ class SpawnEnemy(Action):
                     
                 if new_enemy != None:
                     entities.add_entity(ENEMY_GROUP, new_enemy)
+
+            dt += 1
+            if dt == 30.0:
+                dt = 5.0
+
 
 
