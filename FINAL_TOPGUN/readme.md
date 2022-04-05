@@ -8,3 +8,5 @@ Enemy units have unique movement
 enemy units spawn bullets that have defined movement
 
 player has free movement and can fire bullets.
+
+You need to update the constants PATH and LEVEL1 to make it work in your computer.
