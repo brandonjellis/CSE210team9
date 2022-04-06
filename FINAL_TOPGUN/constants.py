@@ -130,6 +130,7 @@ ENEMY_GROUP = "enemy"
 BACKGROUND_GROUP = "background"
 SCORE = "score"
 LIVES = "lives"
+GAME_OVER = "over"
 
 
 #SCRIPT GROUPS

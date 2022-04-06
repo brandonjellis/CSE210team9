@@ -39,3 +39,8 @@ class EntityMaster():
         if group in self._entities:
             for entity in self._entities[group]:
                 self._entities[group].remove(entity)
+
+    def remove_all_entities(self):
+        for group in self._entities:
+            for entity in self._entities[group]:
+                self._entities[group].remove(entity)

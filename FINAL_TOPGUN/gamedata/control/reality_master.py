@@ -1,12 +1,13 @@
-from cgitb import text
+
 import csv
-from turtle import position
+
 from gamedata.scripting.draw_lives_banner import DrawLivesBanner
 from gamedata.entities.banner import Banner
 from gamedata.scripting.draw_score_banner import DrawScoreBanner
 from constants import *
 from gamedata.datatypes.animation import Animation
 from gamedata.datatypes.point import Point
+from gamedata.scripting.draw_over_banner import drawOverBanner
 
 
 from gamedata.entities.player import Player
@@ -57,6 +58,8 @@ class RealityMaster:
             self._build_lv3(script)
         elif gamestate == INITIALIZE:
             self._build_init(script)
+        elif gamestate == "game_over":
+            self._build_game_over(script)
 
     #SCENE BUILDER METHODS
 
@@ -66,17 +69,20 @@ class RealityMaster:
     def _build_lv1(self,script):
         pass
         #entities
+        self._entlist.remove_all_entities()
         self._create_player()
         self._create_score_banner()
         self._create_lives_banner()
         #script
         level = self._read_level_data(LEVEL1)
         self._input_script(script)
-        self._update_script(script, level, "level1")
+        self._update_script(script, level, "game_over")
         self._output_script(script)
 
-    def _build_game_over():
-        pass
+    def _build_game_over(self,script):
+        self._create_over_banner()
+        self._game_over_script(script)
+
 
     #ENTITY METHODS
     def _create_player(self):
@@ -103,6 +109,11 @@ class RealityMaster:
         lives = Banner(position, text="LIVES: ")
         self._entlist.add_entity(LIVES, lives)
         
+    def _create_over_banner(self):
+        self._entlist.remove_entities(GAME_OVER)
+        position = Point(800,450)
+        over = Banner(position, text = "GAME OVER")
+        self._entlist.add_entity(GAME_OVER, over)
 
     #SCRIPT METHODS
     def _input_script(self, script):
@@ -119,7 +130,7 @@ class RealityMaster:
         script.add_action(UPDATE, PlayerCollisions(self._ps, self._as))
         script.add_action(UPDATE, BulletOffscreen())
         script.add_action(UPDATE, SpawnEnemy(level,next))
-        script.add_action(UPDATE, CheckFinished(next))
+        script.add_action(UPDATE, CheckFinished(next, self._as))
         pass
     
     def _output_script(self, script):
@@ -140,8 +151,18 @@ class RealityMaster:
         script.clear_actions(INITIALIZE)
         script.add_action(INITIALIZE, InitializeDevicesAction(self._as,self._vs))
         script.add_action(INITIALIZE, LoadAssetsAction(self._as,self._vs))
-        script.add_action(INITIALIZE, SwitchScreen("level1"))
+        script.add_action(INITIALIZE, SwitchScreen("level1",self._ks))
         pass
+
+    def _game_over_script(self, script):
+        script.clear_actions(INPUT)
+        script.clear_actions(UPDATE)
+        script.clear_actions(OUTPUT)
+
+        script.add_action(INPUT, SwitchScreen("level1", self._ks, False))
+        script.add_action(OUTPUT, drawOverBanner(self._vs))
+
+
 
     #LEVEL DATA METHODS
     def _read_level_data(self, level_file):
