@@ -35,10 +35,14 @@ class VideoHandler:
         pyray.draw_texture_ex(texture, raylib_position, rotation, scale, tint)
          
     def draw_rectangle(self, rectangle, color, filled = False):
-        x = int(rectangle.get_position().get_x())
-        y = int(rectangle.get_position().get_y())
-        width = int(rectangle.get_size().get_x())
-        height = int(rectangle.get_size().get_y())
+        # x = int(rectangle.get_position().get_x())
+        # y = int(rectangle.get_position().get_y())
+        # width = int(rectangle.get_size().get_x())
+        # height = int(rectangle.get_size().get_y())
+        x = int(rectangle[0])
+        y = int(rectangle[1])
+        width = int(rectangle[2])
+        height = int(rectangle[3])
         raylib_color = self._to_raylib_color(color)
 
         if filled:

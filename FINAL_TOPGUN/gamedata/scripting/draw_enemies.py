@@ -12,3 +12,6 @@ class DrawEnemies(Action):
             image = enemy.get_image()
             position = enemy.get_position()
             self._video_service.draw_image(image, position)
+            if DEBUG:
+                hitbox = enemy.get_hitbox()
+                self._video_service.draw_rectangle(hitbox, ENEMY_DEBUG, filled = True)

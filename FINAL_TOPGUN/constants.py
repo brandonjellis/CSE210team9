@@ -11,6 +11,7 @@ import os
 #----------------------------------------
 
 PATH = "C:\\Programming\\git\\CSE210team9\\"
+DEBUG = True
 
 # WINDOW
 WINDOW_NAME = ""
@@ -33,6 +34,9 @@ FIELD_RIGHT = SCREEN_WIDTH
 #COLORS
 BLACK = Color(0,0,0)
 WHITE = Color(255,255,255)
+BULLET_DEBUG = Color(255,0,0,100)
+PLAYER_DEBUG = Color(255,0,255,100)
+ENEMY_DEBUG = Color(0,0,255,100)
 
 #TEXT
 ALIGN_CENTER = 0
@@ -73,8 +77,8 @@ BULLET_IMAGE1 = Image("assets\\images\\enemy_bullet1.png")
 BULLET_IMAGE2 = Image("assets\\images\\enemy_bullet2.png")
 BULLET_IMAGE3 = Image("assets\\images\\enemy_bullet3.png")
 BULLET_IMAGE4 = Image("assets\\images\\enemy_bullet4.png")
-BULLET_WIDTH = 1
-BULLET_HEIGHT = 1
+BULLET_WIDTH = 10
+BULLET_HEIGHT = 10
 
 #SOUND
 BACKGROUND1_SOUND = Sound("assets\\sounds\\background1.wav")
@@ -92,7 +96,7 @@ SPACESHOOTER_DEAD_SOUND = Sound("assets\\sounds\\space_shooter_dead.wav")
 #EXPLOSION
 EXPLOSION_IMAGES = {Image(f"assets\\images\\explosion{i:01}.png") for i in range(1,7)}
 EXPLOSION_SIZE = 28
-EXPLOSION_DELAY = 0.5
+EXPLOSION_DELAY = 1
 EXPLOSION_GROUP = "explosion"
 
 #OTHER

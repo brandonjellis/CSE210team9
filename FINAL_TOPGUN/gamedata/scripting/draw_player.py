@@ -12,4 +12,7 @@ class DrawPlayer(Action):
         image = player.get_image()
         position = player.get_position()
         self._video_service.draw_image(image, position)
+        if DEBUG:
+            hitbox = player.get_hitbox()
+            self._video_service.draw_rectangle(hitbox, PLAYER_DEBUG, filled = True)
 

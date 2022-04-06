@@ -12,3 +12,6 @@ class DrawEnemyBullets(Action):
             image = bullet.get_image()
             position = bullet.get_position()
             self._video_service.draw_image(image, position)
+            if DEBUG:
+                hitbox = bullet.get_hitbox()
+                self._video_service.draw_rectangle(hitbox, BULLET_DEBUG, filled = True)
