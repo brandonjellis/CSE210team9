@@ -48,10 +48,10 @@ class Type1(Enemy):
         super().__init__(pos, vel, size)
 
     def _xmove(self, dt):
-        return round(CONSTANT_FUNCTION*math.log10(dt))
+        return self._position.get_x()
 
     def _ymove(self, dt):
-        return self._position.get_y()
+        return round(CONSTANT_FUNCTION*math.log10(dt))
 
     def fire(self, entlist):
         current = time()
@@ -72,7 +72,7 @@ class Type1(Enemy):
 
             magnitude = math.sqrt((x2-x1)**2 + (y2-y1)**2)
             unit_vector = Point((x2-x1)/magnitude,(y2-y2)/magnitude)
-            velocity = BULLET_VELOCITY * unit_vector
+            velocity = unit_vector * BULLET_VELOCITY
 
             bullet_position = Point(x,y)
             bullet_size = Point(BULLET_WIDTH,BULLET_HEIGHT)

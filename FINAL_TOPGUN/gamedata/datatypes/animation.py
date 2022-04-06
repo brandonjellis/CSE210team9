@@ -9,9 +9,14 @@ class Animation:
     '''
     def __init__(self, images, delay = 1, loop = False):
         self._images = []
-        self._images.append(images)
+        try:
+            for image in images:
+                self._images.append(image)
+        except:
+            self._images.append(images)
         self._frame = (self._images)[0]
         self._index = 0
+        self._end = (len(self._images) - 1)
         self._delay = delay
         self._loop = loop
         self._start = time.time()
@@ -19,18 +24,18 @@ class Animation:
 
     def next(self):
         #switches current image to next image based on parameters.
-        next_index = self._index + 1
+        print(self._index)
         if self._loop:
             now = time.time()
             d_time = now - self._looptime
             if d_time >= self._delay:
-                if next_index >= len(self._images):
-                    next_index = 0
+                if self._index >= self._end:
+                    self._index = 0
         else:
-            if next_index >= len(self._images):
-                next_index = len(self._images) - 1
-        self._index = next_index
+            if self._index >= self._end:
+                self._index = self._end
         self._frame = self._images[self._index]
+        self._index += 1
 
     def previous(self):
         next_index = self._index - 1
@@ -40,7 +45,7 @@ class Animation:
         self._frame = self._images[self._index]
 
     def set_frame(self,index):
-        if index >= 0 and index < len(self._images):
+        if index >= 0 and index < self._end:
             self._index = index
             self._frame = self._images[index]
 
@@ -51,3 +56,6 @@ class Animation:
 
     def get_frame(self):
         return self._frame
+
+    def get_index(self):
+        return self._index

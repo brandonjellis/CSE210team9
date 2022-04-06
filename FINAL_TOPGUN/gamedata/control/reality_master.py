@@ -102,7 +102,7 @@ class RealityMaster:
         script.add_action(UPDATE, UpdateExplosions())
         script.add_action(UPDATE, BorderCollision(self._ps))
         script.add_action(UPDATE, BulletOffscreen())
-        script.add_action(UPDATE, EnemyCollisions(self._ps))
+        script.add_action(UPDATE, EnemyCollisions(self._ps, self._as))
         script.add_action(UPDATE, PlayerCollisions(self._ps, self._as))
         script.add_action(UPDATE, SpawnEnemy(level,next))
         script.add_action(UPDATE, CheckFinished(next))
@@ -131,8 +131,10 @@ class RealityMaster:
     def _read_level_data(self, level_file):
         data = []
         with open(level_file) as file:
-            next(file)
-            for line in file:
+            reader = csv.reader(file)
+            next(reader)
+            for line in reader:
+                line.append(False)
                 data.append(line)
         return data
 

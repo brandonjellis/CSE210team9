@@ -4,8 +4,9 @@ from gamedata.entities.explosion import Explosion
 
 
 class EnemyCollisions(Action):
-    def __init__(self, physics):
+    def __init__(self, physics, audio):
         self._ps = physics
+        self._as = audio
 
     def execute(self, entities, script, callback):
         enemies = entities.get_entities(ENEMY_GROUP)
@@ -15,9 +16,9 @@ class EnemyCollisions(Action):
             for bullet in bullets:
                 if self._ps.has_collided(enemy, bullet):
                     enemy.take_damage(bullet.get_damage())
-                    entities.remove_entitiy(BULLET_PLAYER_GROUP,bullet)
-                    if enemy.get_life <= 0:
-                        pos = enemy.get_position
-                        entities.remove_entitiy(ENEMY_GROUP, enemy)
+                    entities.remove_entity(BULLET_PLAYER_GROUP,bullet)
+                    if enemy.get_life() <= 0:
+                        pos = enemy.get_position()
+                        entities.remove_entity(ENEMY_GROUP, enemy)
                         entities.add_entity(EXPLOSION_GROUP, Explosion(pos))
                         self._as.play_sound(EXPLOSION_SOUND)

@@ -13,7 +13,7 @@ class UpdateEntities(Action):
         player = entities.get_first_entity(PLAYER_GROUP)
         for i in enemies:
             i.move_next()
-            i.fire()
+            i.fire(entities)
         for i in player_bullets:
             i.move_next()
         for i in enemy_bullets:

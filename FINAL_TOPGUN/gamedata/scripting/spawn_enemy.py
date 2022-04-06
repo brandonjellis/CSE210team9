@@ -19,36 +19,34 @@ class SpawnEnemy(Action):
 
     def execute(self, entities, script, callback):
         current = time()
-        dt = float(round(current - self._start)) + 5
+        dt = (current - self._start)
         for line in self._data:
-            t = float(line[0] + line[1] + line[2] + line[3])
-
-            if dt == t:
+            t = float(line[0])
+            if (dt >= t and line[3] == False):
+                line[3] = True
                 new_enemy = None
-                pos = Point(line[5] + line[6] + line[7],-10)
-                enemy_type = line[9]
+                x = int(line[1])
+                pos = Point(x,-10)
+                enemy_type = int(line[2])
 
                 if enemy_type == 1:
                     new_enemy = Type1(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
-                    new_enemy.set_animation(Animation([ENEMY_IMAGE3]))
+                    new_enemy.set_animation(Animation(ENEMY_IMAGE3))
                 elif enemy_type == 2:
                     new_enemy = Type2(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
-                    new_enemy.set_animation(Animation([ENEMY_IMAGE6]))
+                    new_enemy.set_animation(Animation(ENEMY_IMAGE6))
                 elif enemy_type == 3:
                     new_enemy = Type3(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
-                    new_enemy.set_animation(Animation([ENEMY_IMAGE2]))
+                    new_enemy.set_animation(Animation(ENEMY_IMAGE2))
                 elif enemy_type == 4:
                     new_enemy = TypeBoss(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
-                    new_enemy.set_animation(Animation([ENEMY_IMAGE1]))
+                    new_enemy.set_animation(Animation(ENEMY_IMAGE1))
                 elif enemy_type == 5:
                     callback.next_state(self._next)
                     
                 if new_enemy != None:
                     entities.add_entity(ENEMY_GROUP, new_enemy)
 
-            dt += 1
-            if dt == 30.0:
-                dt = 5.0
 
 
 

@@ -43,6 +43,6 @@ class PhysicsHandler:
         return subject_rectangle_left == collision_rectangle_left
 
     def _get_rectangle(self, body):
-        hitbox = body.get_hitbox
+        hitbox = body.get_hitbox()
         return pyray.Rectangle(hitbox[0],hitbox[1],hitbox[2],hitbox[3])
         

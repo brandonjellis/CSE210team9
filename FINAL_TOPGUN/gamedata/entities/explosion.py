@@ -9,7 +9,7 @@ class Explosion(Entity):
     def __init__(self,pos):
         size = Point(EXPLOSION_SIZE,EXPLOSION_SIZE)
         super().__init__(pos,size=size)
-        self._animation = Animation(EXPLOSION_DELAY, True, EXPLOSION_IMAGES)
+        self._animation = Animation(EXPLOSION_IMAGES, EXPLOSION_DELAY, True)
         self._lifespan = EXPLOSION_DELAY * 6
         self._created = time()
         self._finished = False

@@ -10,7 +10,7 @@ import os
 #GAME CONSTANTS
 #----------------------------------------
 
-PATH = "C:\\CSE210team9\\"
+PATH = "C:\\Programming\\git\\CSE210team9\\"
 
 # WINDOW
 WINDOW_NAME = ""
@@ -59,7 +59,7 @@ ENEMY_HEIGHT = 28
 ENEMY_VELOCITY = 6
 ENEMY_IMAGE1 = Image("assets\\images\\enemy1.png")
 ENEMY_IMAGE2 = Image("assets\\images\\enemy2.png")
-ENEMY_IMAGE3 = Image("assets\\images\\enemy3.png")
+ENEMY_IMAGE3 = Image("assets\\images\\enemy3.png",0.05)
 ENEMY_IMAGE4 = Image("assets\\images\\enemy4.png")
 ENEMY_IMAGE5 = Image("assets\\images\\enemy5.png")
 ENEMY_IMAGE6 = Image("assets\\images\\enemy6.png")
@@ -99,7 +99,7 @@ EXPLOSION_GROUP = "explosion"
 DEFAULT_IMAGE = Image("assets\\images\\default.png")
 
 #LEVELS
-LEVEL1 = f"FINAL_TOPGUN\\assets\\levels\\lv1.txt"
+LEVEL1 = f"assets\\levels\\lv1.txt"
 
 #KEYBINDS
 LEFT = "left"
