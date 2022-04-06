@@ -12,10 +12,9 @@ class DrawLivesBanner(Action):
         position = lives.get_position()
         life = player.get_life()
 
-        msg = lives._dtxt + str(life)
-        lives.set_text(msg)
-        text = lives.get_text()
+        lives.set_value(life)
+        msg = lives.get_text()
 
-        self._video_service.draw_text(text, position)
+        self._video_service.draw_text(msg, position)
 
         

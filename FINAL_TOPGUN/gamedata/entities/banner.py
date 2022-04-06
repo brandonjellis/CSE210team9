@@ -23,4 +23,7 @@ class Banner(Entity):
 
     def add_point(self, points):
         self._value += points
+
+    def set_value(self, value):
+        self._value = value
         

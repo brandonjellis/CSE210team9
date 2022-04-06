@@ -68,6 +68,7 @@ class RealityMaster:
         #entities
         self._create_player()
         self._create_score_banner()
+        self._create_lives_banner()
         #script
         level = self._read_level_data(LEVEL1)
         self._input_script(script)
@@ -98,8 +99,8 @@ class RealityMaster:
 
     def _create_lives_banner(self):
         self._entlist.remove_entities(LIVES)
-        position = Point(15,30)
-        lives = Banner(position, text="LIVES")
+        position = Point(15,45)
+        lives = Banner(position, text="LIVES: ")
         self._entlist.add_entity(LIVES, lives)
         
 
