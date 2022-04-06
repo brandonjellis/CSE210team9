@@ -106,7 +106,7 @@ EXPLOSION_GROUP = "explosion"
 DEFAULT_IMAGE = Image("assets\\images\\default.png")
 
 #LEVELS
-LEVEL1 = f"assets\\levels\\lv1.txt"
+LEVEL1 = f"FINAL_TOPGUN\\assets\\levels\\lv1.txt"
 
 #KEYBINDS
 LEFT = "left"
@@ -119,11 +119,16 @@ KEY_A = "a"
 KEY_S = "s"
 KEY_D = "d"
 
+#TEXT
+FONT_SIZE = 20
+CAPTION = "LIGHT CYCLES"
+
 
 #ENTITY GROUPS
 PLAYER = "player"
 ENEMY_GROUP = "enemy"
 BACKGROUND_GROUP = "background"
+SCORE = "score"
 
 
 #SCRIPT GROUPS
