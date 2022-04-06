@@ -62,21 +62,22 @@ class Type1(Enemy):
             x2 = player_position.get_x()
             y2 = player_position.get_y()
 
-            enemy = entlist.get_first_entity(ENEMY_GROUP)
-            enemy_position = enemy.get_position()
-            x1 = enemy_position.get_x()
-            y1 = enemy_position.get_y()
+            enemies = entlist.get_entities(ENEMY_GROUP)
+            for enemy in enemies:
+                enemy_position = enemy.get_position()
+                x1 = enemy_position.get_x()
+                y1 = enemy_position.get_y()
+            
+                x = x1 + ENEMY_WIDTH/2
+                y = y1 + ENEMY_HEIGHT
 
-            x = x1 + ENEMY_WIDTH/2
-            y = y1 + ENEMY_HEIGHT
+                magnitude = math.sqrt((x2-x1)**2 + (y2-y1)**2)
+                unit_vector = Point((x2-x1)/magnitude,(y2-y1)/magnitude)
+                velocity = unit_vector * BULLET_VELOCITY
 
-            magnitude = math.sqrt((x2-x1)**2 + (y2-y1)**2)
-            unit_vector = Point((x2-x1)/magnitude,(y2-y2)/magnitude)
-            velocity = unit_vector * BULLET_VELOCITY
-
-            bullet_position = Point(x,y)
-            bullet_size = Point(BULLET_WIDTH,BULLET_HEIGHT)
-            bullet_velocity = velocity
+                bullet_position = Point(x,y)
+                bullet_size = Point(BULLET_WIDTH,BULLET_HEIGHT)
+                bullet_velocity = velocity
 
             new_bullet = Bullet()
             new_bullet.set_position(bullet_position)
