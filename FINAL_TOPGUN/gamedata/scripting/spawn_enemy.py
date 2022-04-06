@@ -31,7 +31,7 @@ class SpawnEnemy(Action):
 
                 if enemy_type == 1:
                     new_enemy = Type1(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
-                    new_enemy.set_animation(Animation(ENEMY_IMAGE3))
+                    new_enemy.set_animation(Animation(ENEMY_IMAGE1))
                 elif enemy_type == 2:
                     new_enemy = Type2(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
                     new_enemy.set_animation(Animation(ENEMY_IMAGE6))

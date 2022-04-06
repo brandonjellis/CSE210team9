@@ -51,17 +51,17 @@ FONT_LARGE = 48
 
 # PLAYER
 PLAYER_GROUP = "player"
-PLAYER_IMAGE = Image("assets\\images\\player.png",0.20)
+PLAYER_IMAGE = Image("assets\\images\\player.png",0.05)
 PLAYER_BULLET_IMAGE = Image("assets\\images\\player_bullet.png")
-PLAYER_WIDTH = 28
-PLAYER_HEIGHT = 28
+PLAYER_WIDTH = 30
+PLAYER_HEIGHT = 30
 PLAYER_VELOCITY = 6
 
 # ENEMY
 ENEMY_WIDTH = 28
 ENEMY_HEIGHT = 28
 ENEMY_VELOCITY = 6
-ENEMY_IMAGE1 = Image("assets\\images\\enemy1.png")
+ENEMY_IMAGE1 = Image("assets\\images\\enemy1.png",0.025)
 ENEMY_IMAGE2 = Image("assets\\images\\enemy2.png")
 ENEMY_IMAGE3 = Image("assets\\images\\enemy3.png",0.05)
 ENEMY_IMAGE4 = Image("assets\\images\\enemy4.png")
@@ -73,7 +73,7 @@ BULLET_ENEMY_GROUP = "e_bullet"
 BULLET_PLAYER_GROUP = "p_bullet"
 BULLET_VELOCITY = 6
 PLAYER_BULLET_VELOCITY = 12
-BULLET_IMAGE1 = Image("assets\\images\\enemy_bullet1.png")
+BULLET_IMAGE1 = Image("assets\\images\\enemy_bullet1.png",0.1)
 BULLET_IMAGE2 = Image("assets\\images\\enemy_bullet2.png")
 BULLET_IMAGE3 = Image("assets\\images\\enemy_bullet3.png")
 BULLET_IMAGE4 = Image("assets\\images\\enemy_bullet4.png")
@@ -103,7 +103,7 @@ EXPLOSION_GROUP = "explosion"
 DEFAULT_IMAGE = Image("assets\\images\\default.png")
 
 #LEVELS
-LEVEL1 = f"FINAL_TOPGUN\\assets\\levels\\lv1.txt"
+LEVEL1 = f"assets\\levels\\lv1.txt"
 
 #KEYBINDS
 LEFT = "left"

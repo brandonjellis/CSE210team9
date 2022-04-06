@@ -3,6 +3,7 @@ from gamedata.entities.bullet import Bullet
 from gamedata.datatypes.animation import Animation
 from constants import *
 import math
+from random import randint
 
 from gamedata.entities.entity import Entity
 from gamedata.datatypes.point import Point
@@ -15,7 +16,7 @@ class Enemy(Entity):
         super().__init__(pos,vel,size)
         self._life = 10
         self._lifetime = time()
-        self._fire_delay = 10
+        self._fire_delay = randint(10,20)
         self._last_fire = time()
         
     def _xmove(self,dt):
@@ -55,7 +56,7 @@ class Type1(Enemy):
 
     def fire(self, entlist):
         current = time()
-        if current - self._last_fire > self._fire_delay:
+        if (current - self._last_fire) > self._fire_delay:
             self._last_fire = current
             player = entlist.get_first_entity(PLAYER_GROUP)
             player_position = player.get_position()
@@ -79,12 +80,12 @@ class Type1(Enemy):
                 bullet_size = Point(BULLET_WIDTH,BULLET_HEIGHT)
                 bullet_velocity = velocity
 
-            new_bullet = Bullet()
-            new_bullet.set_position(bullet_position)
-            new_bullet.set_velocity(bullet_velocity)
-            new_bullet.set_size(bullet_size)
-            new_bullet.set_animation(Animation(BULLET_IMAGE1))
-            bullet = entlist.add_entity(BULLET_ENEMY_GROUP, new_bullet)
+                new_bullet = Bullet()
+                new_bullet.set_position(bullet_position)
+                new_bullet.set_velocity(bullet_velocity)
+                new_bullet.set_size(bullet_size)
+                new_bullet.set_animation(Animation(BULLET_IMAGE1))
+                bullet = entlist.add_entity(BULLET_ENEMY_GROUP, new_bullet)
 
 
 class Type2(Enemy):
