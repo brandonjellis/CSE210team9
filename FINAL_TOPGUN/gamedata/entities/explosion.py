@@ -10,9 +10,7 @@ class Explosion(Entity):
         size = Point(EXPLOSION_SIZE,EXPLOSION_SIZE)
         super().__init__(pos,size=size)
         self._animation = Animation(EXPLOSION_IMAGES, EXPLOSION_DELAY, True)
-        self._lifespan = EXPLOSION_DELAY * 6
         self._created = time()
-        self._finished = False
 
     def update(self):
         self._animation.next()
@@ -21,4 +19,7 @@ class Explosion(Entity):
             self.finished = True
 
     def get_finished(self):
-        return self._finished
+        if ((len(EXPLOSION_IMAGES) -1) >= self._animation.get_index()):
+            return True
+        else:
+            return False
