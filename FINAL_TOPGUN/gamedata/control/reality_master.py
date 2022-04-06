@@ -69,7 +69,9 @@ class RealityMaster:
     def _build_lv1(self,script):
         pass
         #entities
-        self._entlist.remove_all_entities()
+        self._entlist.remove_entities(ENEMY_GROUP)
+        self._entlist.remove_entities(BULLET_ENEMY_GROUP)
+        self._entlist.remove_entities(BULLET_PLAYER_GROUP)
         self._create_player()
         self._create_score_banner()
         self._create_lives_banner()
@@ -160,7 +162,9 @@ class RealityMaster:
         script.clear_actions(OUTPUT)
 
         script.add_action(INPUT, SwitchScreen("level1", self._ks, False))
+        script.add_action(OUTPUT, StartDrawingAction(self._vs))
         script.add_action(OUTPUT, drawOverBanner(self._vs))
+        script.add_action(OUTPUT, EndDrawingAction(self._vs))
 
 
 
