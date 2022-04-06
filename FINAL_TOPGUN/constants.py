@@ -12,7 +12,7 @@ import os
 
 os_path = os.getcwd()
 PATH = os.path.dirname(os_path)
-DEBUG = True
+DEBUG = False
 
 # WINDOW
 WINDOW_NAME = ""
@@ -97,7 +97,7 @@ LASER_SHOT2_SOUND = Sound("assets\\sounds\\laser_shot_2.wav")
 SPACESHOOTER_DEAD_SOUND = Sound("assets\\sounds\\space_shooter_dead.wav")
 
 #EXPLOSION
-EXPLOSION_IMAGES = {Image(f"assets\\images\\explosion{i:01}.png") for i in range(1,7)}
+EXPLOSION_IMAGES = {Image(f"assets\\images\\explosion{i:01}.png",0.4) for i in range(1,7)}
 EXPLOSION_SIZE = 28
 EXPLOSION_DELAY = 1
 EXPLOSION_GROUP = "explosion"

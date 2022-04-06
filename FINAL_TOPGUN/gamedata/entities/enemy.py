@@ -3,7 +3,7 @@ from gamedata.entities.bullet import Bullet
 from gamedata.datatypes.animation import Animation
 from constants import *
 import math
-from random import randint
+from random import uniform
 
 from gamedata.entities.entity import Entity
 from gamedata.datatypes.point import Point
@@ -16,7 +16,7 @@ class Enemy(Entity):
         super().__init__(pos,vel,size)
         self._life = 10
         self._lifetime = time()
-        self._fire_delay = randint(2,12)
+        self._fire_delay = uniform(0.25,5.0)
         self._last_fire = time()
         
     def _xmove(self,dt):
