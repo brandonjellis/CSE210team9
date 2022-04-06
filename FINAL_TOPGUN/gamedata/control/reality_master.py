@@ -73,13 +73,7 @@ class RealityMaster:
         self._update_script(script, level, "level1")
         self._output_script(script)
 
-
-
-    def _build_lv2():
-        pass
-    def _build_lv3():
-        pass
-    def _build_menu():
+    def _build_game_over():
         pass
 
     #ENTITY METHODS
@@ -113,9 +107,9 @@ class RealityMaster:
         script.add_action(UPDATE, UpdateEntities())
         script.add_action(UPDATE, UpdateExplosions())
         script.add_action(UPDATE, BorderCollision(self._ps))
-        script.add_action(UPDATE, BulletOffscreen())
         script.add_action(UPDATE, EnemyCollisions(self._ps, self._as))
         script.add_action(UPDATE, PlayerCollisions(self._ps, self._as))
+        script.add_action(UPDATE, BulletOffscreen())
         script.add_action(UPDATE, SpawnEnemy(level,next))
         script.add_action(UPDATE, CheckFinished(next))
         pass

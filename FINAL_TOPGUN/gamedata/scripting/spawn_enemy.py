@@ -42,7 +42,9 @@ class SpawnEnemy(Action):
                     new_enemy = TypeBoss(pos,Point(0,0),Point(ENEMY_WIDTH,ENEMY_HEIGHT))
                     new_enemy.set_animation(Animation(ENEMY_IMAGE1))
                 elif enemy_type == 5:
-                    callback.next_state(self._next)
+                    self._start = time()
+                    for line in self._data:
+                        line[3] = False
                     
                 if new_enemy != None:
                     entities.add_entity(ENEMY_GROUP, new_enemy)

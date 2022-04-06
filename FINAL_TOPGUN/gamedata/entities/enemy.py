@@ -16,7 +16,7 @@ class Enemy(Entity):
         super().__init__(pos,vel,size)
         self._life = 10
         self._lifetime = time()
-        self._fire_delay = randint(10,20)
+        self._fire_delay = randint(2,12)
         self._last_fire = time()
         
     def _xmove(self,dt):
@@ -63,29 +63,28 @@ class Type1(Enemy):
             x2 = player_position.get_x()
             y2 = player_position.get_y()
 
-            enemies = entlist.get_entities(ENEMY_GROUP)
-            for enemy in enemies:
-                enemy_position = enemy.get_position()
-                x1 = enemy_position.get_x()
-                y1 = enemy_position.get_y()
             
-                x = x1 + ENEMY_WIDTH/2
-                y = y1 + ENEMY_HEIGHT
 
-                magnitude = math.sqrt((x2-x1)**2 + (y2-y1)**2)
-                unit_vector = Point((x2-x1)/magnitude,(y2-y1)/magnitude)
-                velocity = unit_vector * BULLET_VELOCITY
+            x1 = self._position.get_x()
+            y1 = self._position.get_y()
+        
+            x = x1 + ENEMY_WIDTH/2
+            y = y1 + ENEMY_HEIGHT
 
-                bullet_position = Point(x,y)
-                bullet_size = Point(BULLET_WIDTH,BULLET_HEIGHT)
-                bullet_velocity = velocity
+            magnitude = math.sqrt((x2-x1)**2 + (y2-y1)**2)
+            unit_vector = Point((x2-x1)/magnitude,(y2-y1)/magnitude)
+            velocity = unit_vector * BULLET_VELOCITY
 
-                new_bullet = Bullet()
-                new_bullet.set_position(bullet_position)
-                new_bullet.set_velocity(bullet_velocity)
-                new_bullet.set_size(bullet_size)
-                new_bullet.set_animation(Animation(BULLET_IMAGE1))
-                bullet = entlist.add_entity(BULLET_ENEMY_GROUP, new_bullet)
+            bullet_position = Point(x,y)
+            bullet_size = Point(BULLET_WIDTH,BULLET_HEIGHT)
+            bullet_velocity = velocity
+
+            new_bullet = Bullet()
+            new_bullet.set_position(bullet_position)
+            new_bullet.set_velocity(bullet_velocity)
+            new_bullet.set_size(bullet_size)
+            new_bullet.set_animation(Animation(BULLET_IMAGE1))
+            bullet = entlist.add_entity(BULLET_ENEMY_GROUP, new_bullet)
 
 
 class Type2(Enemy):

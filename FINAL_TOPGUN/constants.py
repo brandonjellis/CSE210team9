@@ -10,7 +10,8 @@ import os
 #GAME CONSTANTS
 #----------------------------------------
 
-PATH = "C:\\CSE210team9\\"
+os_path = os.getcwd()
+PATH = os.path.dirname(os_path)
 DEBUG = True
 
 # WINDOW
@@ -51,7 +52,7 @@ FONT_LARGE = 48
 
 # PLAYER
 PLAYER_GROUP = "player"
-PLAYER_IMAGE = Image("assets\\images\\player.png",0.05)
+PLAYER_IMAGE = Image("assets\\images\\player.png",0.075)
 PLAYER_BULLET_IMAGE = Image("assets\\images\\player_bullet.png")
 PLAYER_WIDTH = 30
 PLAYER_HEIGHT = 30
