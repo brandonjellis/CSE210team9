@@ -1,4 +1,8 @@
+from cgitb import text
 import csv
+from turtle import position
+from gamedata.entities.banner import Banner
+from gamedata.scripting.draw_score_banner import DrawScoreBanner
 from constants import *
 from gamedata.datatypes.animation import Animation
 from gamedata.datatypes.point import Point
@@ -62,6 +66,7 @@ class RealityMaster:
         pass
         #entities
         self._create_player()
+        self._create_score_banner()
         #script
         level = self._read_level_data(LEVEL1)
         self._input_script(script)
@@ -90,6 +95,13 @@ class RealityMaster:
         player.set_animation(player_animation)
         self._entlist.add_entity(PLAYER_GROUP, player)
 
+    def _create_score_banner(self):
+        self._entlist.remove_entities(SCORE)
+        position = Point(0,0)
+        score = Banner(position= position)
+        self._entlist.add_entity(SCORE, score)
+        
+
     #SCRIPT METHODS
     def _input_script(self, script):
         script.clear_actions(INPUT)
@@ -116,6 +128,7 @@ class RealityMaster:
         script.add_action(OUTPUT, DrawExplosions(self._vs))
         script.add_action(OUTPUT, DrawPlayerBullets(self._vs))
         script.add_action(OUTPUT, DrawPlayer(self._vs))
+        script.add_action(OUTPUT, DrawScoreBanner(self._vs))
         script.add_action(OUTPUT, EndDrawingAction(self._vs))
         
         pass

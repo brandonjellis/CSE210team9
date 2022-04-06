@@ -11,6 +11,8 @@ class EnemyCollisions(Action):
     def execute(self, entities, script, callback):
         enemies = entities.get_entities(ENEMY_GROUP)
         bullets = entities.get_entities(BULLET_PLAYER_GROUP)
+        score = entities.get_first_entity(SCORE)
+        points = 1
 
         for enemy in enemies:
             for bullet in bullets:
@@ -22,3 +24,6 @@ class EnemyCollisions(Action):
                         entities.remove_entity(ENEMY_GROUP, enemy)
                         entities.add_entity(EXPLOSION_GROUP, Explosion(pos))
                         self._as.play_sound(EXPLOSION_SOUND)
+                        score.add_points(points)
+                        
+
