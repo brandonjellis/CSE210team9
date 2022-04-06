@@ -1,6 +1,4 @@
-
 from constants import *
-from gamedata.datatypes.point import Point
 from gamedata.scripting.action import Action
 
 class DrawScoreBanner(Action):

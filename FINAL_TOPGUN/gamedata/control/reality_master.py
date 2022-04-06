@@ -1,6 +1,7 @@
 from cgitb import text
 import csv
 from turtle import position
+from gamedata.scripting.draw_lives_banner import DrawLivesBanner
 from gamedata.entities.banner import Banner
 from gamedata.scripting.draw_score_banner import DrawScoreBanner
 from constants import *
@@ -94,6 +95,12 @@ class RealityMaster:
         position = Point(15,15)
         score = Banner(position,text="SCORE: ")
         self._entlist.add_entity(SCORE, score)
+
+    def _create_lives_banner(self):
+        self._entlist.remove_entities(LIVES)
+        position = Point(15,30)
+        lives = Banner(position, text="LIVES")
+        self._entlist.add_entity(LIVES, lives)
         
 
     #SCRIPT METHODS
@@ -123,6 +130,7 @@ class RealityMaster:
         script.add_action(OUTPUT, DrawPlayerBullets(self._vs))
         script.add_action(OUTPUT, DrawPlayer(self._vs))
         script.add_action(OUTPUT, DrawScoreBanner(self._vs))
+        script.add_action(OUTPUT, DrawLivesBanner(self._vs))
         script.add_action(OUTPUT, EndDrawingAction(self._vs))
         
         pass

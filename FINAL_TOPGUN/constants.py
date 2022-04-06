@@ -129,6 +129,7 @@ PLAYER = "player"
 ENEMY_GROUP = "enemy"
 BACKGROUND_GROUP = "background"
 SCORE = "score"
+LIVES = "lives"
 
 
 #SCRIPT GROUPS
