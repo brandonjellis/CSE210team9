@@ -8,8 +8,8 @@ class UpdateExplosions(Action):
 
     def execute(self, entities, script, callback):
         explosions = entities.get_entities(EXPLOSION_GROUP)
-        for i in explosions:
+        for i in entities.get_entities(EXPLOSION_GROUP):
             if i.get_finished():
-                entities.remove_entitiy(EXPLOSION_GROUP,i)
+                entities.remove_entity(EXPLOSION_GROUP,i)
             else:
                 i.update()

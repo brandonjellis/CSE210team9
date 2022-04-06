@@ -29,13 +29,16 @@ class Animation:
             now = time.time()
             d_time = now - self._looptime
             if d_time >= self._delay:
-                if self._index >= self._end:
-                    self._index = 0
+                self._index += 1
+                self._looptime = time.time()
+            if self._index >= self._end:
+                self._index = 0
         else:
+            self._index += 1
             if self._index >= self._end:
                 self._index = self._end
+
         self._frame = self._images[self._index]
-        self._index += 1
 
     def previous(self):
         next_index = self._index - 1
