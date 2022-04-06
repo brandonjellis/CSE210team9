@@ -52,8 +52,10 @@ FONT_LARGE = 48
 
 # PLAYER
 PLAYER_GROUP = "player"
-PLAYER_IMAGE = Image("assets\\images\\player.png",0.075)
+PLAYER_IMAGE = Image("assets\\images\\player.png",0.1)
+PLAYER_OFFSET = 15
 PLAYER_BULLET_IMAGE = Image("assets\\images\\player_bullet.png")
+PLAYER_BULLET_OFFSET = 25
 PLAYER_WIDTH = 30
 PLAYER_HEIGHT = 30
 PLAYER_VELOCITY = 6
@@ -64,7 +66,7 @@ ENEMY_HEIGHT = 28
 ENEMY_VELOCITY = 6
 ENEMY_IMAGE1 = Image("assets\\images\\enemy1.png",0.025)
 ENEMY_IMAGE2 = Image("assets\\images\\enemy2.png")
-ENEMY_IMAGE3 = Image("assets\\images\\enemy3.png",0.05)
+ENEMY_IMAGE3 = Image("assets\\images\\enemy3.png",0.1)
 ENEMY_IMAGE4 = Image("assets\\images\\enemy4.png")
 ENEMY_IMAGE5 = Image("assets\\images\\enemy5.png")
 ENEMY_IMAGE6 = Image("assets\\images\\enemy6.png")

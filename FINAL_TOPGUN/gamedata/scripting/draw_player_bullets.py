@@ -1,5 +1,6 @@
 from constants import *
 from gamedata.scripting.action import Action
+from gamedata.datatypes.point import Point
 
 class DrawPlayerBullets(Action):
     def __init__(self, video_service):
@@ -11,7 +12,9 @@ class DrawPlayerBullets(Action):
         for bullet in player_bullets:
             image = bullet.get_image()
             position = bullet.get_position()
-            #self._video_service.draw_image(image, position)
+            x = position.get_x() - PLAYER_BULLET_OFFSET
+            image_pos = Point(x, position.get_y())
+            self._video_service.draw_image(image, image_pos)
             if DEBUG:
                 hitbox = bullet.get_hitbox()
                 self._video_service.draw_rectangle(hitbox, BULLET_DEBUG, filled = True)

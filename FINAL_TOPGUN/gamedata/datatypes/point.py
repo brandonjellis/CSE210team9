@@ -38,6 +38,9 @@ class Point:
         """
         return self._x
 
+    def set_x(self,x):
+        self._x = x
+
     def get_y(self):
         """Gets the vertical distance.
         
@@ -45,6 +48,9 @@ class Point:
             integer: The vertical distance.
         """
         return self._y
+
+    def set_y(self,y):
+        self._y = y
 
     def reverse(self):
         """Reverses the point by inverting both x and y values.
