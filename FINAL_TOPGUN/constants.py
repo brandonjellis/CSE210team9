@@ -10,7 +10,7 @@ import os
 #GAME CONSTANTS
 #----------------------------------------
 
-PATH = "C:\\Programming\\git\\CSE210team9\\"
+PATH = "C:\\CSE210team9\\"
 
 # WINDOW
 WINDOW_NAME = ""
@@ -22,7 +22,7 @@ SCREEN_WIDTH = 1600
 SCREEN_HEIGHT = 900
 CENTER_X = SCREEN_WIDTH /2
 CENTER_Y = SCREEN_HEIGHT /2
-CONSTANT_FUNCTION = 100
+CONSTANT_FUNCTION = 300
 
 # FIELD
 FIELD_TOP = 60
@@ -99,7 +99,7 @@ EXPLOSION_GROUP = "explosion"
 DEFAULT_IMAGE = Image("assets\\images\\default.png")
 
 #LEVELS
-LEVEL1 = f"assets\\levels\\lv1.txt"
+LEVEL1 = f"FINAL_TOPGUN\\assets\\levels\\lv1.txt"
 
 #KEYBINDS
 LEFT = "left"
