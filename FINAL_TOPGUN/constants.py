@@ -45,7 +45,7 @@ ALIGN_LEFT = 1
 ALIGN_RIGHT = 2
 
 # FONT
-FONT_FILE = "FINAL_TOPGUN\\assets\\fonts\\zorque.otf"
+FONT_FILE = "\\FINAL_TOPGUN\\assets\\fonts\\zorque.otf"
 FONT_SMALL = 32
 FONT_LARGE = 48
 
@@ -106,7 +106,7 @@ EXPLOSION_GROUP = "explosion"
 DEFAULT_IMAGE = Image("assets\\images\\default.png")
 
 #LEVELS
-LEVEL1 = f"FINAL_TOPGUN\\assets\\levels\\lv1.txt"
+LEVEL1 = f"assets\\levels\\lv1.txt"
 
 #KEYBINDS
 LEFT = "left"

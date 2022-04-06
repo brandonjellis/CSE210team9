@@ -91,8 +91,8 @@ class RealityMaster:
 
     def _create_score_banner(self):
         self._entlist.remove_entities(SCORE)
-        position = Point(0,0)
-        score = Banner(position= position)
+        position = Point(15,15)
+        score = Banner(position,text="SCORE: ")
         self._entlist.add_entity(SCORE, score)
         
 

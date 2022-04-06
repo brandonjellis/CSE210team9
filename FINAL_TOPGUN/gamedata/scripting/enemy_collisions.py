@@ -24,6 +24,6 @@ class EnemyCollisions(Action):
                         entities.remove_entity(ENEMY_GROUP, enemy)
                         entities.add_entity(EXPLOSION_GROUP, Explosion(pos))
                         self._as.play_sound(EXPLOSION_SOUND)
-                        score.add_points(points)
+                        score.add_point(points)
                         
 

@@ -51,11 +51,11 @@ class VideoHandler:
             pyray.draw_rectangle_lines(x, y, width, height, raylib_color)
 
     def draw_text(self, text, position):
-        filepath = text.get_fontfile()
-        value = text.get_value()
-        size = text.get_size()
+        filepath = PATH + FONT_FILE
+        value = text
+        size = FONT_SMALL
         spacing = 0
-        alignment = text.get_alignment()
+        alignment = ALIGN_LEFT
         tint = self._to_raylib_color(Color(255, 255, 255))
 
         font = self._fonts[filepath]

@@ -12,7 +12,8 @@ class Banner(Entity):
         return self._font_size
     
     def get_text(self):
-        return self._text
+        msg = self._text + str(self._value)
+        return msg
 
     def set_font_size(self, font_size):
         self._font_size = font_size
@@ -21,6 +22,5 @@ class Banner(Entity):
         self._text = text
 
     def add_point(self, points):
-        self._points += points
-        msg = self._text + str(self._points)
-        self.set_text(msg)
+        self._value += points
+        
